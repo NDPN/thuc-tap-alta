@@ -1,10 +1,10 @@
-import "./Login.css";
+import "./css index/Login.css";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signIn } from "./firebase";
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,6 +18,7 @@ const Login = () => {
   return (
     <div className="form">
       <div>
+      <img className="logo" src={require("./Img/Logo alta.png")} alt="..."></img>
         <form>
           <div className="user-form">
             <label className="lable">Tên đăng nhập *</label>
@@ -47,7 +48,7 @@ const Login = () => {
               onClick={(e) => {
                 e.preventDefault();
                 signIn(email, password)
-                  .then((x) => navigate("/dashboard"))
+                  .then(() => navigate("/dashboard"))
                   .catch(() => notification());
               }}
             >
@@ -56,7 +57,8 @@ const Login = () => {
           </div>
         </form>
       </div>
-      <div>
+      <div className="decord">
+        <img className="img-decord" src={require("./Img/Group 341.png")}></img>
         <p className="he-thong-text">Hệ thống</p>
         <p className="quan-ly-text">Quản lý xếp hàng</p>
       </div>
