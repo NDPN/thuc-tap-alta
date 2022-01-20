@@ -48,7 +48,7 @@ const Login = () => {
               onClick={(e) => {
                 e.preventDefault();
                 signIn(email, password)
-                  .then(() => navigate("/dashboard"))
+                  .then(() => navigate("/Information"))
                   .catch(() => notification());
               }}
             >

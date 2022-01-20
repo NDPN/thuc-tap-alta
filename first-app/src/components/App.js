@@ -3,7 +3,9 @@ import React from "react";
 import Login from "./Login";
 import Resetpw from "./checkingEmail";
 import Reset from "./confirmPassword";
-import Dashboard from "./dashBoard";
+import Information from "./Information";
+import Dashboard from "./Dashboard";
+
 function App() {
   return (
     <div className="App">
@@ -12,10 +14,10 @@ function App() {
           <Route path="Login" element={<Login />} />
           <Route path="checkingEmail" element={<Resetpw/>} />
           <Route path="comfirmPassword" element={<Reset />} />
-          <Route path="dashboard" element={<Dashboard/>} />
+          <Route path="Information" element={<Information/>} />
+          <Route path="Dashboard" element={<Dashboard/>} />
         </Routes>
       </BrowserRouter>
-      {/* <Login /> */}
     </div>
   );
 }

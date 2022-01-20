@@ -1,106 +1,83 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { data, handleSignout } from "./firebase";
-import "./css index/dashBoard.css";
-import logo from "./Img/Logo alta.png";
+import React, { useState } from "react";
+import Menubar from "./Menubar";
+import "./css index/Dashboard.css";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+  const [data, setdata] = useState([
+    {
+      img: "/Img/Ellipse-10.png",
+      title: "Số thứ tự đã cấp",
+      value: "4221",
+      parameter: "32.41%",
+    },
+    {
+      img: "/Img/Ellipse-10-(1).png",
+      title: "Số thứ tự đã sử dụng",
+      value: "3721",
+      parameter: "32.41%",
+    },
+    {
+      img: "/Img/Ellipse-10-(2).png",
+      title: "Số thứ tự đang chờ",
+      value: "468",
+      parameter: "56.41%",
+    },
+    {
+      img: "/Img/Ellipse-10-(3).png",
+      title: "Số thứ tự đã bỏ qua",
+      value: "32",
+      parameter: "22.41%",
+    },
+  ]);
+
+  const [value, setvalue] = useState("Ngày");
+
+  const handleValue = (e) => {
+    setvalue(e.target.value);
+  };
   return (
     <div>
-      <div className="Menubar">
-        <img className="logo-dashboard" src={logo} alt="..."></img>
-        <div className="conten-item">
-          <div className="Frame f264">
-            <p className="text-content">Dashboard</p>
-          </div>
-          <div className="Frame f265">
-            <p className="text-content">Thiết bị</p>
-          </div>
-          <div className="Frame f266">
-            <p className="text-content">Dịch vụ</p>
-          </div>
-          <div className="Frame f267">
-            <p className="text-content">Cấp số</p>
-          </div>
-          <div className="Frame f268">
-            <p className="text-content">Báo cáo</p>
-          </div>
-          <div className="Frame f269">
-            <p className="text-content">Dịch vụ</p>
-          </div>
-        </div>
-        <div className="logout-form">
-          <button
-            className="log-out-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              handleSignout().then(() => navigate("/Login"));
-            }}
-          >
-            <img src={require("./Img/fi_log-out.png")}></img>
-            <p className="logout-text">Đăng xuất</p>
-          </button>
-        </div>
+      <Menubar />
+      
+      <div className="Frame-625222">
+        {data.map((item) => {
+          return (
+            <div className="Rectangle-3463117">
+              <div className="Group-625207">
+                <img
+                  src={window.location.origin + item.img}
+                  className="Vector"
+                />
+                <div className="info">
+                  <p className="text">{item.title}</p>
+                </div>
+              </div>
+              <div className="two-value">
+                <p className="value">{item.value}</p>
+                <p className="Rectangle-3463121">{item.parameter}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
-      <div>
-        <div className="form-data">
-          <div>
-            <img className="avt" src={data[0].avt} alt="..."></img>
-          </div>
-          <div className="container">
-            <div className="data-user">
-              <label className="lable-user">Tên người dùng</label>
-              <input
-                className="user-data"
-                value={data[0].displayName}
-                disabled
-              ></input>
-            </div>
-            <div className="data-user">
-              <label className="lable-user">Tên đăng nhập</label>
-              <input
-                className="user-data"
-                value={data[0].email}
-                disabled
-              ></input>
-            </div>
-          </div>
-          <div className="container">
-            <div className="data-user">
-              <label className="lable-user">Số điện thoại</label>
-              <input
-                className="user-data"
-                value={data[0].phoneNumber}
-                disabled
-              ></input>
-            </div>
-            <div className="data-user">
-              <label className="lable-user">Mật khẩu</label>
-              <input className="user-data" value="///" disabled></input>
-            </div>
-          </div>
-          <div className="container">
-            <div className="data-user">
-              <label className="lable-user">email</label>
-              <input
-                className="user-data"
-                value={data[0].email}
-                disabled
-              ></input>
-            </div>
-            <div className="data-user">
-              <label className="lable-user">Vai trò</label>
-              <input
-                className="user-data"
-                value={data[0].role}
-                disabled
-              ></input>
-            </div>
-          </div>
+      <div className="chart">
+        <div>
+          <h3 className="Bảng-thống-kê-theo-ngày">
+            Bảng thống kê theo {value}
+          </h3>
+          <p className="month-year">Tháng month/year</p>
+        </div>
+        <div className="Frame-625193">
+          <h4>Xem theo</h4>
+          <select value={value} onChange={handleValue} className="dropdown">
+            <option value="Ngày">Ngày</option>
+            <option value="Tuần">Tuần</option>
+            <option value="Tháng">Tháng</option>
+          </select>
         </div>
       </div>
     </div>
   );
 };
+
 export default Dashboard;
