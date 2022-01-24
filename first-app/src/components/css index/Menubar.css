@@ -12,6 +12,7 @@
   width: 200px;
   height: 810px;
   left: 0px;
+  top: 0px;
 
   background-color: white;
 }
@@ -30,6 +31,25 @@
   height: 20px;
   left: 4px;
   top: 14px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 8px;
+}
+.f259 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 12px 12px 4px;
+
+  position: absolute;
+  width: 176px;
+  height: 48px;
+  left: 12px;
+  top: 0px;
+
+  border-radius: 8px;
 }
 .f264 {
   display: flex;
@@ -185,4 +205,7 @@
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
+}
+.active {
+  background-color: #ff7506;
 }

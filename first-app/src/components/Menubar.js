@@ -28,23 +28,70 @@ const Menubar = () => {
               navigate("/Dashboard");
             }}
           >
-          <img src={window.location.origin + "/Img/Element-4.png"} className="icon"></img>
-            <p className="text-content">Dashboard</p>
+            <div className="f259">
+              <img
+                src={window.location.origin + "/Img/Element-4.png"}
+                alt="..."
+                className="icon"
+              ></img>
+              <p className="text-content">Dashboard</p>
+            </div>
           </div>
-          <div className="Frame f265">
-            <p className="text-content">Thiết bị</p>
+          <div
+            className="Frame f265"
+            onClick={() => {
+              setTitle("Thiết bị");
+              navigate("/Device");
+            }}
+          >
+            <div className="Frame f259">
+              <img
+                src={window.location.origin + "/Img/Monitor.png"}
+                alt="..."
+                className="icon"
+              ></img>
+              <p className="text-content">Thiết bị</p>
+            </div>
           </div>
           <div className="Frame f266">
-            <p className="text-content">Dịch vụ</p>
+            <div className="Frame f259">
+              <img
+                src={window.location.origin + "/Img/Service.png"}
+                alt="..."
+                className="icon"
+              ></img>
+              <p className="text-content">Dịch vụ</p>
+            </div>
           </div>
           <div className="Frame f267">
-            <p className="text-content">Cấp số</p>
+            <div className="Frame f259">
+              <img
+                src={window.location.origin + "/Img/fi_layers.png"}
+                alt="..."
+                className="icon"
+              ></img>
+              <p className="text-content">Cấp số</p>
+            </div>
           </div>
           <div className="Frame f268">
-            <p className="text-content">Báo cáo</p>
+            <div className="Frame f259">
+              <img
+                src={window.location.origin + "/Img/report.png"}
+                alt="..."
+                className="icon"
+              ></img>
+              <p className="text-content">Báo cáo</p>
+            </div>
           </div>
           <div className="Frame f269">
-            <p className="text-content">Dịch vụ</p>
+            <div className="Frame f259">
+              <img
+                src={window.location.origin + "/Img/setting.png"}
+                alt="..."
+                className="icon"
+              ></img>
+              <p className="text-content">Cài đặt hệ thống</p>
+            </div>
           </div>
         </div>
         <div className="logout-form">
@@ -55,7 +102,7 @@ const Menubar = () => {
               handleSignout().then(() => navigate("/Login"));
             }}
           >
-            <img src={require("./Img/fi_log-out.png")}></img>
+            <img src={require("./Img/fi_log-out.png")} alt="..."></img>
             <p className="logout-text">Đăng xuất</p>
           </button>
         </div>
@@ -65,12 +112,20 @@ const Menubar = () => {
           <h3 className="Title">{title}</h3>
         </div>
         <div>
-            <img src={window.location.origin + "/Img/Frame-271.png"} className="Frame-271"></img>
-            <img src={data[0].avt} className="unsplash-Fyl8sMC2j2Q"></img>
-            <div className="Group-296">
-              <p className="Hello">Xin chào</p>
-              <p className="Name">{data[0].displayName}</p>
-            </div>  
+          <img
+            src={window.location.origin + "/Img/Frame-271.png"}
+            alt="..."
+            className="Frame-271"
+          ></img>
+          <img
+            src={data[0].avt}
+            alt="..."
+            className="unsplash-Fyl8sMC2j2Q"
+          ></img>
+          <div className="Group-296">
+            <p className="Hello">Xin chào</p>
+            <p className="Name">{data[0].displayName}</p>
+          </div>
         </div>
       </div>
     </div>
