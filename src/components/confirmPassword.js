@@ -52,7 +52,7 @@ const Reset = () => {
       </div>
 
       <div className="decord">
-        <img className="img-decord-2" src={require("./Img/Frame.png")}></img>
+        <img className="img-decord-2" src={require("./Img/Frame.png")} alt="..."></img>
       </div>
     </div>
   );

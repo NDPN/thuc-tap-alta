@@ -1,0 +1,43 @@
+.add-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 4px;
+
+  position: absolute;
+  width: 80px;
+  height: 94px;
+  right: 0;
+  top: 244px;
+
+  background: #fff2e7;
+
+  box-shadow: 0px 0px 6px #e7e9f2;
+  border-radius: 8px 0px 0px 8px;
+}
+.add-text {
+  position: static;
+  width: 72px;
+  height: 38px;
+  left: 4px;
+  top: 44px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+
+  /* Orange/$-Orange-500 */
+
+  color: #ff7506;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 4px 0px;
+}

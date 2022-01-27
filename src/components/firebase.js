@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getDoc } from "firebase/firestore";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -23,18 +24,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
-// updateProfile(auth.currentUser, {
-//   displayName: "Cheems",
-//   photoURL: "https://mcdn.coolmate.me/image/October2021/meme-cheems-1.png",
-//   phoneNumber: "123456",
-// })
-//   .then((x) => {
-//     console.log(x);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+// const db = app.firestore();
 
 const signIn = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
@@ -85,5 +75,5 @@ export {
   onAuthStateChanged,
   createPassword,
   data,
-  handleSignout
+  handleSignout,
 };
