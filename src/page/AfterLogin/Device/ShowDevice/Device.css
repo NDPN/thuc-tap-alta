@@ -31,7 +31,7 @@ table {
 }
 th {
   width: 171px;
-  height: 49px;
+  height: 20px;
   background: #ff9138;
 }
 .th-text {
@@ -51,22 +51,22 @@ tr:nth-child(odd) {
   background: #fff2e7;
 }
 .td-text {
-position: static;
-width: 57px;
-height: 21px;
-left: 16px;
-top: 14px;
+  position: static;
+  width: 57px;
+  height: 21px;
+  left: 16px;
+  top: 14px;
 
-font-family: Nunito;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 21px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
 
-color: #535261;
+  color: #535261;
 
-flex: none;
-order: 0;
-flex-grow: 0;
-margin: 0px 10px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
 }

@@ -68,3 +68,28 @@ input :disabled {
 
   border-radius: 6px;
 }
+.header-dp-name {
+  position: absolute;
+  width: 186px;
+  height: 36px;
+  left: 55px;
+  top: 307px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  color: #282739;
+}
+.upd-avt {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  left: 195px;
+  top: 246px;
+}

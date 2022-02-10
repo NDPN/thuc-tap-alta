@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./css index/checkingEmail.css";
-import { forgotPassword } from "./firebase";
+import "./checkingEmail.css";
+import { forgotPassword } from "../../../components/firebase";
 import { Link, useNavigate } from "react-router-dom";
 
 const Resetpw = () => {
@@ -12,7 +12,7 @@ const Resetpw = () => {
       <div>
         <img
           className="logo"
-          src={require("./Img/Logo alta.png")}
+          src={window.location.origin + "/Img/Logo-alta.png"}
           alt="..."
         ></img>
         <p className="dat-lai-mk">Đặt lại mật khẩu</p>
@@ -43,7 +43,7 @@ const Resetpw = () => {
         </button>
       </div>
       <div className="decord">
-        <img className="img-decord-2" src={require("./Img/Frame.png")}></img>
+        <img className="img-decord-2" src={window.location.origin + "/Img/Frame.png"}></img>
       </div>
     </div>
   );

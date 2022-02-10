@@ -1,12 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import Login from "./Login";
-import Resetpw from "./checkingEmail";
-import Reset from "./confirmPassword";
-import Information from "./Information";
-import Dashboard from "./Dashboard";
-import Device from "./Device";
-import Desc from "./Desc";
+import React from "react";
+import Login from "./page/Login/Login";
+import Resetpw from "./page/Login/Checking/checkingEmail";
+import Reset from "./page/Login/ConfirmPassWord/confirmPassword";
+import Information from "./page/AfterLogin/Infomation/Information";
+import Dashboard from "./page/AfterLogin/Dashboard/Dashboard";
+import Device from "./page/AfterLogin/Device/ShowDevice/Device";
 
 function App() {
   return (
@@ -18,8 +17,7 @@ function App() {
           <Route path="comfirmPassword" element={<Reset />} />
           <Route path="Information" element={<Information />} />
           <Route path="Dashboard" element={<Dashboard />} />
-          <Route path="Device" element={<Device />} />
-          <Route path="Desc" element={<Desc />} />
+          <Route path="Device" element={<Device/>}/>
         </Routes>
       </BrowserRouter>
     </div>

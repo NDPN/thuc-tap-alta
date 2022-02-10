@@ -1,7 +1,7 @@
-import "./css index/Login.css";
+import "./Login.css";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signIn } from "./firebase";
+import { signIn } from "../../components/firebase";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Login = () => {
   return (
     <div className="form">
       <div>
-      <img className="logo" src={require("./Img/Logo alta.png")} alt="..."></img>
+      <img className="logo" src={window.location.origin + "/Img/Logo-alta.png"} alt="..."></img>
         <form>
           <div className="user-form">
             <label className="lable">Tên đăng nhập *</label>
@@ -58,7 +58,7 @@ const Login = () => {
         </form>
       </div>
       <div className="decord">
-        <img className="img-decord" src={require("./Img/Group 341.png")}></img>
+        <img className="img-decord" src={window.location.origin + "/Img/Group-341.png"} alt="..."></img>
         <p className="he-thong-text">Hệ thống</p>
         <p className="quan-ly-text">Quản lý xếp hàng</p>
       </div>

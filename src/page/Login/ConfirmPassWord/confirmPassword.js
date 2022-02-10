@@ -1,24 +1,19 @@
 import React, { useState } from "react";
-import "./css index/confirmPassword.css";
-import { createPassword } from "./firebase";
+import "./confirmPassword.css";
+import { createPassword } from "../../../components/firebase";
 import { useNavigate } from "react-router-dom";
 
-// function useQuery() {
-//   return new URLSearchParams(useLocation().search);
-// }
 
 const Reset = () => {
   const navigate = useNavigate();
   const [newpassword, setNewpassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
-  // const querry = useQuery();
-  // console.log(querry.get("oobCode"));
   return (
     <div>
       <div>
         <img
           className="logo"
-          src={require("./Img/Logo alta.png")}
+          src={window.location.origin + "/Img/Logo-alta.png"}
           alt="..."
         ></img>
         <p className="notification">Đặt lại mật khẩu mới</p>
@@ -52,7 +47,7 @@ const Reset = () => {
       </div>
 
       <div className="decord">
-        <img className="img-decord-2" src={require("./Img/Frame.png")} alt="..."></img>
+        <img className="img-decord-2" src={window.location.origin + "/Img/Frame.png"} alt="..."></img>
       </div>
     </div>
   );

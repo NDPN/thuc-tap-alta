@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./css index/AddDevice.css";
+import "./AddDevice.css";
 
-const Adddevice = (props) => {
+const AddDevice = (props) => {
   const visible = props.visible;
   const close = props.close;
   const newData = props.newData;
@@ -10,8 +10,8 @@ const Adddevice = (props) => {
       Mã: "",
       Tên: "",
       IP: "",
-      hoatDong: false,
-      ketNoi: false,
+      hoatDong: true,
+      ketNoi: true,
       Service: "",
     },
   });
@@ -61,8 +61,8 @@ const Adddevice = (props) => {
               <span style={{ color: "red" }}>*</span>
             </label>
             <select className="device-auto-input">
-              <option value={1}>1</option>
-              <option value={2}>2</option>
+              <option value={1}>Kiosk</option>
+              <option value={2}>Display counter</option>
             </select>
           </div>
           <div className="f624731" style={{ left: "24px", top: "158px" }}>
@@ -178,4 +178,4 @@ const Adddevice = (props) => {
   );
 };
 
-export default Adddevice;
+export default AddDevice;

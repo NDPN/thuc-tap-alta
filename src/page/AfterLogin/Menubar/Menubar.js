@@ -1,30 +1,26 @@
 import React, { useState } from "react";
-import { handleSignout } from "./firebase";
+import { handleSignout } from "../../../components/firebase";
 import { useNavigate } from "react-router-dom";
-import "./css index/Menubar.css";
-import { data } from "./firebase";
+import "./Menubar.css";
+import { data } from "../../../components/firebase";
 
 const Menubar = () => {
   const navigate = useNavigate();
-  const [title, setTitle] = useState("Thông tin cá nhân");
-
   return (
     <div>
       <div className="Menubar">
         <img
           className="logo-dashboard"
-          src={require("./Img/Logo alta.png")}
+          src={window.location.origin + "/Img/Logo-alta.png"}
           alt="..."
           onClick={() => {
             navigate("/Information");
-            setTitle("Thông tin cá nhân");
           }}
         ></img>
         <div className="conten-item">
           <div
             className="Frame f264"
             onClick={() => {
-              setTitle("Dash board");
               navigate("/Dashboard");
             }}
           >
@@ -40,7 +36,6 @@ const Menubar = () => {
           <div
             className="Frame f265"
             onClick={() => {
-              setTitle("Thiết bị");
               navigate("/Device");
             }}
           >
@@ -102,15 +97,15 @@ const Menubar = () => {
               handleSignout().then(() => navigate("/Login"));
             }}
           >
-            <img src={require("./Img/fi_log-out.png")} alt="..."></img>
+            <img
+              src={window.location.origin + "/Img/fi_log-out.png"}
+              alt="..."
+            ></img>
             <p className="logout-text">Đăng xuất</p>
           </button>
         </div>
       </div>
       <div className="Topbar">
-        <div>
-          <h3 className="Title">{title}</h3>
-        </div>
         <div>
           <img
             src={window.location.origin + "/Img/Frame-271.png"}

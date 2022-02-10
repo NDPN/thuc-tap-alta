@@ -1,19 +1,28 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { data } from "./firebase";
-import "./css index/Information.css";
-import Menubar from "./Menubar";
+import { data } from "../../../components/firebase";
+import "./Information.css";
+import "../../../components/css index/Title.css";
+import Menubar from "../Menubar/Menubar";
 
 const Information = () => {
   return (
     <div>
-      <div className="Menubar">
+      <div>
         <Menubar />
       </div>
       <div>
+        <p className="title">Thông tin cá nhân</p>
         <div className="form-data">
           <div>
-            <img className="avt" src={data[0].avt} alt="..."></img>
+            <div>
+              <img className="avt" src={data[0].avt} alt="..."></img>
+              <img
+                className="upd-avt"
+                src={window.location.origin + "/Img/Group-624817.png"}
+                alt="..."
+              ></img>
+            </div>
+            <p className="header-dp-name">{data[0].displayName}</p>
           </div>
           <div className="container">
             <div className="data-user">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Menubar from "./Menubar";
-import "./css index/Dashboard.css";
+import Menubar from "../Menubar/Menubar";
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const [data, setdata] = useState([
@@ -38,7 +38,7 @@ const Dashboard = () => {
   return (
     <div>
       <Menubar />
-      
+      <p className="title">Dash board</p>
       <div className="Frame-625222">
         {data.map((item) => {
           return (
