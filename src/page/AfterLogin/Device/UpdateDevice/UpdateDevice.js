@@ -38,7 +38,7 @@ const UpdateDevice = (props) => {
           }}
         >
           <h1 className="Thong-tin-thiet-bi">Thông tin thiết bị</h1>
-          {getData.map((item) => [
+          {getData?.map((item) => [
             <div className="f624731" style={{ left: "24px", top: "66px" }}>
               <label className="lable-device">
                 <p className="Sample-text">Mã thiết bị</p>

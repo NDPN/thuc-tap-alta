@@ -48,7 +48,12 @@ const Menubar = () => {
               <p className="text-content">Thiết bị</p>
             </div>
           </div>
-          <div className="Frame f266">
+          <div
+            className="Frame f266"
+            onClick={() => {
+              navigate("/Service");
+            }}
+          >
             <div className="Frame f259">
               <img
                 src={window.location.origin + "/Img/Service.png"}

@@ -9,7 +9,7 @@ const Desc = (props) => {
     <div style={{ display: `${visible ? "flex" : "none"}` }}>
       <form className="Desc">
         <h1 className="Thong-tin-thiet-bi">Thông tin thiết bị</h1>
-        {showData.map((item) => [
+        {showData?.map((item) => [
           <div className="Group-625230" style={{ top: "66px", left: "24px" }}>
             <p className="lable-text-desc">
               Mã thiết bị: <span className="text-desc">{item.Mã}</span>
