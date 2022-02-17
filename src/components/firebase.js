@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDoc } from "firebase/firestore";
+import { getFirestore, collection } from "firebase/firestore";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -21,11 +21,15 @@ const firebaseConfig = {
   messagingSenderId: "384044968889",
   appId: "1:384044968889:web:b3b0f3cc7d225d4278a468",
 };
-
+// auth
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// const db = app.firestore();
 
+//firestore
+const db = getFirestore(app);
+const docDevice = collection(db, "Device");
+
+// ...
 const signIn = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
@@ -76,4 +80,5 @@ export {
   createPassword,
   data,
   handleSignout,
+  docDevice,
 };

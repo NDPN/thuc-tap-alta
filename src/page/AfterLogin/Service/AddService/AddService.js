@@ -1,4 +1,5 @@
 import React from "react";
+import "../../../../components/css index/form.css";
 
 const AddService = () => {
   return (
@@ -10,10 +11,10 @@ const AddService = () => {
           width: "169px",
           height: "36px",
           left: "224px",
-          top: "104px",
+          top: "72px",
         }}
       >
-        <h1 className="Quan-ly-thiet-bi">Quản lý dịch vụ</h1>
+        <h1 className="Title-1">Quản lý dịch vụ</h1>
       </div>
       <form
         style={{
@@ -36,7 +37,7 @@ const AddService = () => {
           </label>
           <input
             placeholder="201"
-            className="device-auto-input"
+            className="auto-input"
             // onChange={(e) =>
             //   setchange({ input: { ...change.input, Mã: e.target.value } })
             // }
@@ -48,11 +49,11 @@ const AddService = () => {
             <p className="Sample-text">Loại thiết bị</p>
             <span style={{ color: "red" }}>*</span>
           </label>
-          <input
+          <textarea
             placeholder="Mô tả dịch vụ"
-            className="device-auto-input"
+            className="auto-input"
             style={{ height: "132px" }}
-          ></input>
+          ></textarea>
         </div>
         <div className="f624731" style={{ left: "24px", top: "158px" }}>
           <label className="lable-device">
@@ -61,7 +62,7 @@ const AddService = () => {
           </label>
           <input
             placeholder="Khám tim mạch"
-            className="device-auto-input"
+            className="auto-input"
             // onChange={(e) =>
             //   setchange({ input: { ...change.input, Tên: e.target.value } })
             // }
@@ -73,27 +74,57 @@ const AddService = () => {
         >
           Quy tắc cấp số
         </h1>
-        <div className="Group-337">
-          <div className="Group-338">
+        <div className="Group-338" style={{ top: "292px" }}>
+          <div className="Group-334" style={{ top: "10px" }}>
             <input type="checkbox"></input>
             <label>Tăng tự động từ: </label>
-            <input placeholder="0001" className="input-Group-338" /> <p> đến </p>
-            <input placeholder="9999" className="input-Group-338" />
           </div>
-          <div>
+          <div className="Group-333">
+            <input
+              type="number"
+              placeholder="0001"
+              className="input-Group-337"
+            />
+            <text> đến </text>
+            <input
+              type="number"
+              placeholder="9999"
+              className="input-Group-337"
+            />
+          </div>
+        </div>
+        <div className="Group-338" style={{ top: "348px" }}>
+          <div className="Group-334" style={{ top: "10px" }}>
             <input type="checkbox"></input>
             <label>Prefix: </label>
           </div>
-          <div>
-            <input type="checkbox"></input>
-            <label>Surfix: </label>
-          </div>
-          <div>
-            <input type="checkbox"></input>
-            <label>Reset mỗi ngày</label>
+          <div className="Group-333">
+            <input
+              type="number"
+              placeholder="0001"
+              className="input-Group-337"
+            />
           </div>
         </div>
-        <div style={{ position: "absolute", left: "24px", top: "434px" }}>
+        <div className="Group-338" style={{ top: "404px" }}>
+          <div className="Group-334" style={{ top: "10px" }}>
+            <input type="checkbox"></input>
+            <label>Prefix: </label>
+          </div>
+          <div className="Group-333">
+            <input
+              type="number"
+              placeholder="0001"
+              className="input-Group-337"
+            />
+          </div>
+        </div>
+        <div className="Group-338" style={{ top: "460px" }}>
+          <input type="checkbox"></input>
+          <label>Reset mỗi ngày</label>
+        </div>
+
+        <div style={{ position: "absolute", left: "24px", top: "496px" }}>
           <p>
             <span style={{ color: "red" }}>*</span> Là trường thông tin bắt buộc
           </p>
@@ -131,7 +162,7 @@ const AddService = () => {
           //   }}
         >
           <p className="Add-btn-text" style={{ color: "#FFFFFF" }}>
-            Thêm thiết bị
+            Thêm dịch vụ
           </p>
         </button>
       </div>

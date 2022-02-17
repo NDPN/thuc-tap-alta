@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./ShowService.css";
 import Menubar from "../../Menubar/Menubar";
-import { FakeDevice } from "../../../../components/FakeData";
-import { check } from "../../../../components/Contant";
+import Button from "../../../../components/Button";
+import { check } from "../../../../components/Constant";
 
 const ShowService = () => {
   const [Service, setService] = useState([]);
-  
-  
-  useEffect(() => {
-    setService([...FakeDevice]);
-  }, []);
+
+  // useEffect(() => {
+  //   setService([...FakeDevice]);
+  // }, []);
   return (
     <div>
+      <Button text="Thêm dịch vụ"/>
       <Menubar />
       {/* <div style={{ display: `${visible.Device ? "flex" : "none"}` }}> */}
       <div>
@@ -23,7 +23,7 @@ const ShowService = () => {
               width: "200px",
               height: "36px",
               left: "224px",
-              top: "104px",
+              top: "72px",
 
               fontFamily: "Nunito",
               fontFtyle: "normal",

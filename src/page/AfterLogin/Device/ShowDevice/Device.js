@@ -1,41 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Device.css";
 import Menubar from "../../Menubar/Menubar";
-import Addcomponent from "../../../../components/Button";
-import AddDevice from "../AddDevice/AddDevice";
-import Desc from "../DescDevice/Desc";
+import Button from "../../../../components/Button";
+import Desc from "../DescDevice/DescDevice";
 import UpdateDevice from "../UpdateDevice/UpdateDevice";
-import { FakeDevice } from "../../../../components/FakeData";
-import { check } from "../../../../components/Contant";
+import { check } from "../../../../components/Constant";
+import { docDevice } from "../../../../components/firebase";
+import { doc, getDocs } from "firebase/firestore";
 
 const Device = () => {
+  const navigate = useNavigate();
   const [tdStyle, settdStyle] = useState({
     display: "-webkit-box",
     height: "21px",
   });
 
-  const [fake, setFake] = useState({
-    Device: [
-      {
-        Mã: String,
-        Tên: String,
-        IP: String,
-        hoatDong: false,
-        ketNoi: false,
-        Service: String,
-      },
-    ],
-    getData: [
-      {
-        Mã: String,
-        Tên: String,
-        IP: String,
-        hoatDong: false,
-        ketNoi: false,
-        Service: String,
-      },
-    ],
-  });
+  const [Device, setDevice] = useState([]);
+  const [Chitiet, setChitiet] = useState([]);
+
   const [search, setSearch] = useState({
     hoatDong: "",
     ketNoi: "",
@@ -43,21 +26,21 @@ const Device = () => {
   });
   const [visible, setvisible] = useState({
     Device: true,
-    Add: false,
     Desc: false,
     Upd: false,
   });
 
+  const getData = async () => {
+    const Device = await getDocs(docDevice);
+    setDevice(Device.docs.map((item) => ({ ...item.data(), id: item.id })));
+  };
   useEffect(() => {
-    setFake({
-      Device: [...FakeDevice],
-    });
-
-    const searchData = fake?.Device.filter((item) => {
+    getData();
+    const searchData = Device.filter((item) => {
       return item.hoatDong === search?.hoatDong;
     });
     if (search?.hoatDong) {
-      setFake({
+      setDevice({
         Device: [...searchData],
       });
     }
@@ -85,70 +68,23 @@ const Device = () => {
       return <p className="td-text service">{item}</p>;
     }
   };
-  const onHandleAdd = (newData) => {
-    const { input } = newData;
-    setFake({
-      Device: [...fake.Device, input],
-    });
-  };
-  const onChange = () => {
-    setvisible({
-      Device: false,
-      Add: true,
-    });
-  };
   const onHandleUpdate = (props) => {
-    setFake({
-      getData: [props],
-    });
-    setvisible({
-      Device: false,
-      Upd: true,
-    });
+    navigate("/UpdateDevice")
   };
-  const closeUpdate = () => {
-    setvisible({
-      Device: true,
-      Upd: false,
-    });
-  };
-  const closeChange = () => {
-    setvisible({
-      Device: true,
-      Add: false,
-    });
-  };
-  const HandleShowData = (props) => {
-    setFake({
-      getData: [props],
-    });
+
+  const HandleShowDevice = (props) => {
+    setChitiet([props]);
     setvisible({
       Device: false,
       Desc: true,
     });
   };
-  //
+  <UpdateDevice getData={Chitiet} />;
   return (
     <div>
       <Menubar />
-      <Addcomponent on={onChange} />
-      <AddDevice
-        visible={visible.Add}
-        close={closeChange}
-        input={fake.input}
-        newData={(newData) => onHandleAdd(newData)}
-      />
-      <Desc
-        visible={visible.Desc}
-        close={closeUpdate}
-        showData={fake.getData}
-      />
-      <UpdateDevice
-        visible={visible.Upd}
-        close={closeUpdate}
-        getData={fake.getData}
-      />
-
+      <Button on={() => navigate("/AddDevice")} text="Thêm thiết bị" />
+      <Desc visible={visible.Desc} Chitiet={Chitiet} />
       <div style={{ display: `${visible.Device ? "flex" : "none"}` }}>
         <div>
           <h1
@@ -157,7 +93,7 @@ const Device = () => {
               width: "200px",
               height: "36px",
               left: "224px",
-              top: "104px",
+              top: "72px",
 
               fontFamily: "Nunito",
               fontFtyle: "normal",
@@ -331,7 +267,7 @@ const Device = () => {
             <th></th>
             <th></th>
           </tr>
-          {fake.Device?.map((item) => [
+          {Device.map((item) => [
             <tr>
               <td style={{ height: "49px" }}>
                 <p className="td-text">{item.Mã}</p>
@@ -358,10 +294,10 @@ const Device = () => {
                   </p>
                 </div>
               </td>
-              <td style={{ width: "268px" }}>{checkItem(item.Service)}</td>
+              <td style={{ width: "268px" }}>{checkItem(item.dichVu)}</td>
               <td>
                 <p
-                  onClick={() => HandleShowData(item)}
+                  onClick={() => HandleShowDevice(item)}
                   className="onclick-text td-text"
                 >
                   Chi tiết

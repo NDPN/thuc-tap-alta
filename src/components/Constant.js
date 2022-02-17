@@ -1,3 +1,4 @@
+// Kiểm tra hoạt động và kết nối
 const check = (item) => {
   if (item == 2) {
     return {
@@ -15,5 +16,7 @@ const check = (item) => {
     };
   }
 };
+
+
 
 export { check };

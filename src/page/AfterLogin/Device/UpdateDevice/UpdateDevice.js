@@ -1,18 +1,21 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Menubar from "../../Menubar/Menubar";
 import "./UpdateDevice.css";
 
 const UpdateDevice = (props) => {
-  const visible = props.visible;
-  const close = props.close;
+  const navigate = useNavigate();
   const getData = props.getData;
+  console.log(getData);
   const [change, setChange] = useState({
     Mã: "",
     Tên: "",
     IP: "",
-    Service: "",
+    dichVu: "",
   });
   return (
-    <div style={{ display: `${visible ? "flex" : "none"}` }}>
+    <div>
+      <Menubar />
       <div>
         <div
           style={{
@@ -20,10 +23,10 @@ const UpdateDevice = (props) => {
             width: "169px",
             height: "36px",
             left: "224px",
-            top: "104px",
+            top: "72px",
           }}
         >
-          <h1 className="Quan-ly-thiet-bi">Quản lý thiết bị</h1>
+          <h1 className="Title-1">Quản lý thiết bị</h1>
         </div>
         <form
           style={{
@@ -45,7 +48,7 @@ const UpdateDevice = (props) => {
                 <span style={{ color: "red" }}>*</span>
               </label>
               <input
-                className="device-auto-input"
+                className="auto-input"
                 value={item.Mã}
                 onChange={(e) => setChange({ ...change, Mã: e.target.value })}
               ></input>
@@ -55,7 +58,7 @@ const UpdateDevice = (props) => {
                 <p className="Sample-text">Loại thiết bị</p>
                 <span style={{ color: "red" }}>*</span>
               </label>
-              <select className="device-auto-input">
+              <select className="auto-input">
                 <option value={1}>Kiosk</option>
                 <option value={2}>Display counter</option>
               </select>
@@ -66,7 +69,7 @@ const UpdateDevice = (props) => {
                 <span style={{ color: "red" }}>*</span>
               </label>
               <input
-                className="device-auto-input"
+                className="auto-input"
                 onChange={(e) =>
                   setChange({ input: { ...change.input, Tên: e.target.value } })
                 }
@@ -77,7 +80,7 @@ const UpdateDevice = (props) => {
                 <p className="Sample-text">Tên đăng nhập</p>
                 <span style={{ color: "red" }}>*</span>
               </label>
-              <input className="device-auto-input"></input>
+              <input className="auto-input"></input>
             </div>,
             <div className="f624731" style={{ left: "24px", top: "250px" }}>
               <label className="lable-device">
@@ -85,7 +88,7 @@ const UpdateDevice = (props) => {
                 <span style={{ color: "red" }}>*</span>
               </label>
               <input
-                className="device-auto-input"
+                className="auto-input"
                 onChange={(e) =>
                   setChange({ input: { ...change.input, IP: e.target.value } })
                 }
@@ -96,7 +99,7 @@ const UpdateDevice = (props) => {
                 <p className="Sample-text">Mật khẩu</p>
                 <span style={{ color: "red" }}>*</span>
               </label>
-              <input className="device-auto-input"></input>
+              <input className="auto-input"></input>
             </div>,
             <div
               style={{
@@ -116,11 +119,11 @@ const UpdateDevice = (props) => {
                 <span style={{ color: "red" }}>*</span>
               </label>
               <input
-                className="device-auto-input"
+                className="auto-input"
                 style={{ width: "1104px" }}
                 onChange={(e) =>
                   setChange({
-                    input: { ...change.input, Service: e.target.value },
+                    input: { ...change.input, dichVu: e.target.value },
                   })
                 }
               ></input>
@@ -146,7 +149,7 @@ const UpdateDevice = (props) => {
           }}
         >
           <button
-            onClick={close}
+            onClick={() => navigate("/Device")}
             className="Add-btn"
             style={{
               background: "#fff2e7",
@@ -160,8 +163,8 @@ const UpdateDevice = (props) => {
             className="Add-btn"
             style={{ background: "#FF9138", left: "179px" }}
             onClick={() => {
-              getData(change);
-              close();
+              
+              navigate("/Device");
             }}
           >
             <p className="Add-btn-text" style={{ color: "#FFFFFF" }}>

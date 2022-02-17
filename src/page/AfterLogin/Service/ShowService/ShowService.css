@@ -18,20 +18,3 @@ input[type="date"] {
 ::-webkit-calendar-picker-indicator {
   background: url(/public/img/calendar.png) no-repeat;
 }
-.Group-337 {
-  position: absolute;
-  top: 304px;
-  left: 24px;
-}
-.Group-338 {
-  display: flex;
-  flex-direction: row;
-}
-.input-Group-338 {
-  width: 61px;
-  height: 44px;
-
-  border: 1.5px solid #d4d4d7;
-  box-sizing: border-box;
-  border-radius: 8px;
-}

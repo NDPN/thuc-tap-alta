@@ -1,0 +1,97 @@
+.Title-1 {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+
+  color: #ff7506;
+}
+.auto-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 10px 12px;
+
+  position: static;
+  width: 540px;
+  height: 44px;
+
+  background: #ffffff;
+
+  border: 1.5px solid #d4d4d7;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 8px 0px;
+
+  /* font */
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+.Sample-text {
+  position: static;
+  height: 24px;
+  left: 0px;
+  top: 0px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+
+  color: #282739;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 4px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.input-Group-337 {
+  width: 61px;
+  height: 44px;
+
+  border: 1.5px solid #d4d4d7;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+input[type="checkbox"] {
+  background: #ffffff;
+  /* Blue */
+
+  border: 1.5px solid #4277ff;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+.Group-338 {
+  position: absolute;
+  width: 337px;
+  height: 44px;
+  left: 24px;
+}
+.Group-334 {
+  position: absolute;
+  width: 148px;
+  height: 24px;
+}
+.Group-333 {
+  position: absolute;
+  width: 174px;
+  height: 44px;
+  left: 163px;
+}

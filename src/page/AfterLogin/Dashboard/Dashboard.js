@@ -45,7 +45,7 @@ const Dashboard = () => {
             <div className="Rectangle-3463117">
               <div className="Group-625207">
                 <img
-                  src={window.location.origin + item.img}
+                  src={window.location.origin + item.img} alt="..."
                   className="Vector"
                 />
                 <div className="info">

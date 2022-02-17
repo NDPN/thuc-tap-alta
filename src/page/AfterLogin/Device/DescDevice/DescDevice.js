@@ -1,15 +1,16 @@
 import React from "react";
-import "./Desc.css";
+import "./DescDevice.css";
 
 const Desc = (props) => {
-  const showData = props.showData;
+  const Chitiet = props.Chitiet;
   const visible = props.visible;
+  
 
   return (
     <div style={{ display: `${visible ? "flex" : "none"}` }}>
       <form className="Desc">
         <h1 className="Thong-tin-thiet-bi">Thông tin thiết bị</h1>
-        {showData?.map((item) => [
+        {Chitiet?.map((item) => [
           <div className="Group-625230" style={{ top: "66px", left: "24px" }}>
             <p className="lable-text-desc">
               Mã thiết bị: <span className="text-desc">{item.Mã}</span>
@@ -46,7 +47,7 @@ const Desc = (props) => {
               className="text-desc"
               style={{ left: "0px", top: "32px", margin: "4px" }}
             >
-              {item.Service}
+              {item.dichVu}
             </p>
           </div>,
         ])}

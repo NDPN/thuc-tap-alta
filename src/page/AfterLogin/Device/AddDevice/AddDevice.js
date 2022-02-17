@@ -1,34 +1,42 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Menubar from "../../Menubar/Menubar";
 import "./AddDevice.css";
+import { addDoc } from "firebase/firestore";
+import { docDevice } from "../../../../components/firebase";
 
-const AddDevice = (props) => {
-  const visible = props.visible;
-  const close = props.close;
-  const newData = props.newData;
-  const [change, setchange] = useState({
+const AddDevice = () => {
+  const navigate = useNavigate();
+  const [newDevice, setnewDevice] = useState({
     input: {
       Mã: "",
       Tên: "",
       IP: "",
-      hoatDong: true,
-      ketNoi: true,
-      Service: "",
+      hoatDong: "1",
+      ketNoi: "1",
+      dichVu: "",
     },
   });
 
+  const handleAddDevice = async () => {
+    const { input } = newDevice
+    await addDoc(docDevice, input)
+  }
+
   return (
     <div>
-      <div style={{ display: `${visible ? "flex" : "none"}` }}>
+    <Menubar/>
+      <div>
         <div
           style={{
             position: "absolute",
             width: "169px",
             height: "36px",
             left: "224px",
-            top: "104px",
+            top: "72px",
           }}
         >
-          <h1 className="Quan-ly-thiet-bi">Quản lý thiết bị</h1>
+          <h1 className="Title-1">Quản lý thiết bị</h1>
         </div>
         <form
           style={{
@@ -49,9 +57,9 @@ const AddDevice = (props) => {
               <span style={{ color: "red" }}>*</span>
             </label>
             <input
-              className="device-auto-input"
+              className="auto-input"
               onChange={(e) =>
-                setchange({ input: { ...change.input, Mã: e.target.value } })
+                setnewDevice({ input: { ...newDevice.input, Mã: e.target.value } })
               }
             ></input>
           </div>
@@ -60,7 +68,7 @@ const AddDevice = (props) => {
               <p className="Sample-text">Loại thiết bị</p>
               <span style={{ color: "red" }}>*</span>
             </label>
-            <select className="device-auto-input">
+            <select className="auto-input">
               <option value={1}>Kiosk</option>
               <option value={2}>Display counter</option>
             </select>
@@ -71,9 +79,9 @@ const AddDevice = (props) => {
               <span style={{ color: "red" }}>*</span>
             </label>
             <input
-              className="device-auto-input"
+              className="auto-input"
               onChange={(e) =>
-                setchange({ input: { ...change.input, Tên: e.target.value } })
+                setnewDevice({ input: { ...newDevice.input, Tên: e.target.value } })
               }
             ></input>
           </div>
@@ -82,7 +90,7 @@ const AddDevice = (props) => {
               <p className="Sample-text">Tên đăng nhập</p>
               <span style={{ color: "red" }}>*</span>
             </label>
-            <input className="device-auto-input"></input>
+            <input className="auto-input"></input>
           </div>
           <div className="f624731" style={{ left: "24px", top: "250px" }}>
             <label className="lable-device">
@@ -90,9 +98,9 @@ const AddDevice = (props) => {
               <span style={{ color: "red" }}>*</span>
             </label>
             <input
-              className="device-auto-input"
+              className="auto-input"
               onChange={(e) =>
-                setchange({ input: { ...change.input, IP: e.target.value } })
+                setnewDevice({ input: { ...newDevice.input, IP: e.target.value } })
               }
             ></input>
           </div>
@@ -101,7 +109,7 @@ const AddDevice = (props) => {
               <p className="Sample-text">Mật khẩu</p>
               <span style={{ color: "red" }}>*</span>
             </label>
-            <input className="device-auto-input"></input>
+            <input className="auto-input"></input>
           </div>
           <div
             style={{
@@ -121,11 +129,11 @@ const AddDevice = (props) => {
               <span style={{ color: "red" }}>*</span>
             </label>
             <input
-              className="device-auto-input"
+              className="auto-input"
               style={{ width: "1104px" }}
               onChange={(e) =>
-                setchange({
-                  input: { ...change.input, Service: e.target.value },
+                setnewDevice({
+                  input: { ...newDevice.input, dichVu: e.target.value },
                 })
               }
             ></input>
@@ -150,7 +158,7 @@ const AddDevice = (props) => {
           }}
         >
           <button
-            onClick={close}
+            onClick={() => navigate("/Device")}
             className="Add-btn"
             style={{
               background: "#fff2e7",
@@ -164,8 +172,8 @@ const AddDevice = (props) => {
             className="Add-btn"
             style={{ background: "#FF9138", left: "179px" }}
             onClick={() => {
-              newData(change);
-              close();
+              handleAddDevice();
+              navigate("/Device");
             }}
           >
             <p className="Add-btn-text" style={{ color: "#FFFFFF" }}>
