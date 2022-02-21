@@ -28,6 +28,7 @@ const auth = getAuth(app);
 //firestore
 const db = getFirestore(app);
 const docDevice = collection(db, "Device");
+const docService = collection(db, "Service");
 
 // ...
 const signIn = (email, password) => {
@@ -80,5 +81,7 @@ export {
   createPassword,
   data,
   handleSignout,
+  db,
   docDevice,
+  docService,
 };

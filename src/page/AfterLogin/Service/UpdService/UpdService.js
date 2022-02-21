@@ -1,20 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../../../components/css index/form.css";
 import Menubar from "../../Menubar/Menubar";
-import { useNavigate } from "react-router-dom";
-import { addDoc } from "firebase/firestore";
-import { docService } from "../../../../components/firebase";
+import { useLocation, useNavigate } from "react-router-dom";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../../../components/firebase";
 
-const AddService = () => {
+const UpdService = () => {
   const naviagte = useNavigate();
+  const location = useLocation();
+
+  const [data, setData] = useState([]);
   const [input, setInput] = useState({
     ID: "",
     name: "",
     desc: "",
-    active: "1",
   });
-  const handleAddService = async () => {
-    await addDoc(docService, input);
+
+  useEffect(() => {
+    if (!location.state) return naviagte(-1);
+    const { state } = location;
+    setData(state);
+  }, []);
+
+  const handleUpdService = async (id, state) => {
+    const serviceDoc = doc(db, "Service", id);
+    await updateDoc(serviceDoc, state);
+    naviagte("/Service");
   };
 
   return (
@@ -121,7 +132,7 @@ const AddService = () => {
         <div className="Group-338" style={{ top: "404px" }}>
           <div className="Group-334" style={{ top: "10px" }}>
             <input type="checkbox"></input>
-            <label>Surfix: </label>
+            <label>Prefix: </label>
           </div>
           <div className="Group-333">
             <input
@@ -168,17 +179,16 @@ const AddService = () => {
         <button
           className="Add-btn"
           style={{ background: "#FF9138", left: "179px" }}
-          onClick={() => naviagte("/Service")}
         >
           <p
             className="Add-btn-text"
             style={{ color: "#FFFFFF" }}
             onClick={() => {
-              handleAddService();
+              handleUpdService(data?.id, input)
               naviagte("/Service");
             }}
           >
-            Thêm dịch vụ
+            Cập nhật
           </p>
         </button>
       </div>
@@ -186,4 +196,4 @@ const AddService = () => {
   );
 };
 
-export default AddService;
+export default UpdService;

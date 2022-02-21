@@ -2,19 +2,39 @@ import React, { useState, useEffect } from "react";
 import "./ShowService.css";
 import Menubar from "../../Menubar/Menubar";
 import Button from "../../../../components/Button";
-import { check } from "../../../../components/Constant";
+import { checkAct, checkLenght } from "../../../../components/Constant";
+import { docService } from "../../../../components/firebase";
+import { getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const ShowService = () => {
+  const navigate = useNavigate();
   const [Service, setService] = useState([]);
+  const [tdStyle, settdStyle] = useState({
+    display: "-webkit-box",
+    height: "21px",
+  });
 
-  // useEffect(() => {
-  //   setService([...FakeDevice]);
-  // }, []);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  //function
+  const getData = async () => {
+    const Service = await getDocs(docService);
+    setService(Service.docs.map((item) => ({ ...item.data(), id: item.id })));
+  };
+
   return (
     <div>
-      <Button text="Thêm dịch vụ"/>
       <Menubar />
-      {/* <div style={{ display: `${visible.Device ? "flex" : "none"}` }}> */}
+      <Button
+        on={() => {
+          navigate("/AddService");
+        }}
+        img={window.location.origin + "/Img/Add-square.png"}
+        text="Thêm dịch vụ"
+      />
       <div>
         <div>
           <h1
@@ -190,33 +210,27 @@ const ShowService = () => {
             <th></th>
           </tr>
           {Service?.map((item) => [
-            <tr>
+            <tr key={item.ID}>
               <td style={{ height: "49px" }}>
-                <p className="td-text">{item.Mã}</p>
+                <p className="td-text">{item.ID}</p>
               </td>
               <td>
-                <p className="td-text">{item.Tên}</p>
+                <p className="td-text">{item.name}</p>
               </td>
-
-              <td>
-                <div className="tb-content">
-                  <p className="td-text">
-                    {item.hoatDong == 1 ? "Hoạt động" : "Ngưng hoạt động"}
-                  </p>
-                </div>
+              <td style={{ width: "268px" }}>
+                {checkLenght(item.desc, tdStyle, settdStyle)}
               </td>
               <td>
                 <div className="tb-content">
-                  <div style={check(item.ketNoi)}></div>
+                  <div style={checkAct(item.active)}></div>
                   <p className="td-text">
-                    {item.ketNoi == 1 ? "Kết nối" : "Mất kết nối"}
+                    {item.active == 1 ? "Kết nối" : "Mất kết nối"}
                   </p>
                 </div>
               </td>
-
               <td>
                 <p
-                  // onClick={() => HandleShowData(item)}
+                  onClick={() => navigate("/DescService", { state: item })}
                   className="onclick-text td-text"
                 >
                   Chi tiết
@@ -224,7 +238,7 @@ const ShowService = () => {
               </td>
               <td>
                 <p
-                  // onClick={() => onHandleUpdate(item)}
+                  onClick={() => navigate("/UpdateService", { state: item })}
                   className="onclick-text td-text"
                 >
                   Cập nhật

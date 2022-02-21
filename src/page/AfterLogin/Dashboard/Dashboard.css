@@ -168,3 +168,46 @@
   flex-grow: 0;
   margin: 0px 8px;
 }
+.total-card {
+  position: absolute;
+  width: 401px;
+  height: 810px;
+  right: 0;
+  top: 0px;
+
+  background: #ffffff;
+
+  box-shadow: 0px 4px 6px rgba(219, 219, 219, 0.5);
+  border-radius: 8px 0px 0px 8px;
+}
+.total-2 {
+  position: absolute;
+  left: 24px;
+  top: 104px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+
+  color: #ff7506;
+}
+.Frame-625202 {
+  position: absolute;
+  width: 353px;
+  height: 83px;
+  left: 24px;
+  top: 156px;
+
+  background: #ffffff;
+  box-shadow: 2px 2px 15px rgba(70, 64, 67, 0.1);
+  border-radius: 12px;
+}
+.Group-625204 {
+  position: absolute;
+  width: 67px;
+  height: 54px;
+  left: 88px;
+  top: 14px;
+}

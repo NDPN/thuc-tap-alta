@@ -1,91 +1,57 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Device.css";
 import Menubar from "../../Menubar/Menubar";
 import Button from "../../../../components/Button";
-import Desc from "../DescDevice/DescDevice";
-import UpdateDevice from "../UpdateDevice/UpdateDevice";
-import { check } from "../../../../components/Constant";
+import { checkAct, checkLenght } from "../../../../components/Constant";
 import { docDevice } from "../../../../components/firebase";
-import { doc, getDocs } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 
 const Device = () => {
   const navigate = useNavigate();
+//   const location = useLocation();
+//   const { state } = location;
+// console.log(state)
   const [tdStyle, settdStyle] = useState({
     display: "-webkit-box",
     height: "21px",
   });
 
   const [Device, setDevice] = useState([]);
-  const [Chitiet, setChitiet] = useState([]);
 
   const [search, setSearch] = useState({
     hoatDong: "",
     ketNoi: "",
     Mã: "",
   });
-  const [visible, setvisible] = useState({
-    Device: true,
-    Desc: false,
-    Upd: false,
-  });
 
-  const getData = async () => {
-    const Device = await getDocs(docDevice);
-    setDevice(Device.docs.map((item) => ({ ...item.data(), id: item.id })));
-  };
   useEffect(() => {
     getData();
     const searchData = Device.filter((item) => {
-      return item.hoatDong === search?.hoatDong;
+      return item.active === search?.active;
     });
-    if (search?.hoatDong) {
+    if (search?.active) {
       setDevice({
         Device: [...searchData],
       });
     }
   }, [search]);
+
   // function
-
-  const checkItem = (item) => {
-    if (item.length > 20) {
-      return (
-        <>
-          <p style={tdStyle} className="td-text service">
-            {item}
-          </p>
-          <p
-            onClick={() =>
-              settdStyle({ ...tdStyle, display: "flex", height: "auto" })
-            }
-            className="onclick-text td-text"
-          >
-            Xem thêm
-          </p>
-        </>
-      );
-    } else {
-      return <p className="td-text service">{item}</p>;
-    }
-  };
-  const onHandleUpdate = (props) => {
-    navigate("/UpdateDevice")
+  const getData = async () => {
+    const Device = await getDocs(docDevice);
+    setDevice(Device.docs.map((item) => ({ ...item.data(), id: item.id })));
   };
 
-  const HandleShowDevice = (props) => {
-    setChitiet([props]);
-    setvisible({
-      Device: false,
-      Desc: true,
-    });
-  };
-  <UpdateDevice getData={Chitiet} />;
   return (
     <div>
       <Menubar />
-      <Button on={() => navigate("/AddDevice")} text="Thêm thiết bị" />
-      <Desc visible={visible.Desc} Chitiet={Chitiet} />
-      <div style={{ display: `${visible.Device ? "flex" : "none"}` }}>
+      <Button
+        on={() => navigate("/AddDevice")}
+        text="Thêm thiết bị"
+        img={window.location.origin + "/Img/add-square.png"}
+      />
+      <div>
         <div>
           <h1
             style={{
@@ -258,46 +224,52 @@ const Device = () => {
         {/* table */}
         <table>
           <tr>
-            <th className="th-text">Mã thiết bị</th>
+            <th className="th-text" style={{ borderRadius: "12px 0 0 0" }}>
+              Mã thiết bị
+            </th>
             <th className="th-text">Tên thiết bị</th>
             <th className="th-text">Địa chỉ IP</th>
             <th className="th-text">Trạng thái hoạt động</th>
             <th className="th-text">Trạng thái kết nối</th>
             <th className="th-text">Dịch vụ sử dụng</th>
             <th></th>
-            <th></th>
+            <th style={{ borderRadius: "0 12px 0 0" }}></th>
           </tr>
           {Device.map((item) => [
-            <tr>
+            <tr key={item.ID}>
               <td style={{ height: "49px" }}>
-                <p className="td-text">{item.Mã}</p>
+                <p className="td-text">{item.ID}</p>
               </td>
               <td>
-                <p className="td-text">{item.Tên}</p>
+                <p className="td-text">{item.name}</p>
               </td>
               <td>
                 <p className="td-text">{item.IP}</p>
               </td>
               <td>
                 <div className="tb-content">
-                  <div style={check(item.hoatDong)}></div>
+                  <div style={checkAct(item.active)}></div>
                   <p className="td-text">
-                    {item.hoatDong == 1 ? "Hoạt động" : "Ngưng hoạt động"}
+                    {item.active == 1 ? "Hoạt động" : "Ngưng hoạt động"}
                   </p>
                 </div>
               </td>
               <td>
                 <div className="tb-content">
-                  <div style={check(item.ketNoi)}></div>
+                  <div style={checkAct(item.connect)}></div>
                   <p className="td-text">
-                    {item.ketNoi == 1 ? "Kết nối" : "Mất kết nối"}
+                    {item.connect == 1 ? "Kết nối" : "Mất kết nối"}
                   </p>
                 </div>
               </td>
-              <td style={{ width: "268px" }}>{checkItem(item.dichVu)}</td>
+              <td style={{ width: "268px" }}>
+                {checkLenght(item.service, tdStyle, settdStyle)}
+              </td>
               <td>
                 <p
-                  onClick={() => HandleShowDevice(item)}
+                  onClick={() => {
+                    navigate("/DescDevice", { state: item });
+                  }}
                   className="onclick-text td-text"
                 >
                   Chi tiết
@@ -305,7 +277,9 @@ const Device = () => {
               </td>
               <td>
                 <p
-                  onClick={() => onHandleUpdate(item)}
+                  onClick={() => {
+                    navigate("/UpdateDevice", { state: item });
+                  }}
                   className="onclick-text td-text"
                 >
                   Cập nhật

@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Menubar from "../Menubar/Menubar";
 import "./Dashboard.css";
+import Card from "../../../components/Card/Card";
 
 const Dashboard = () => {
+  const location = useLocation();
+
   const [data, setdata] = useState([
     {
       img: "/Img/Ellipse-10.png",
@@ -29,12 +33,25 @@ const Dashboard = () => {
       parameter: "22.41%",
     },
   ]);
+  const [date, setDate] = useState("Ngày");
+  const [total, setTotal] = useState({
+    Device: [],
+    Service: [],
+  });
 
-  const [value, setvalue] = useState("Ngày");
-
-  const handleValue = (e) => {
-    setvalue(e.target.value);
+  const handleDate = (e) => {
+    setDate(e.target.value);
   };
+
+  useEffect(() => {
+    const { state } = location;
+    const { Device, Service } = state;
+    setTotal({
+      Device: Device,
+      Service: Service,
+    });
+  }, []);
+
   return (
     <div>
       <Menubar />
@@ -45,7 +62,8 @@ const Dashboard = () => {
             <div className="Rectangle-3463117">
               <div className="Group-625207">
                 <img
-                  src={window.location.origin + item.img} alt="..."
+                  src={window.location.origin + item.img}
+                  alt="..."
                   className="Vector"
                 />
                 <div className="info">
@@ -62,19 +80,25 @@ const Dashboard = () => {
       </div>
       <div className="chart">
         <div>
-          <h3 className="Bảng-thống-kê-theo-ngày">
-            Bảng thống kê theo {value}
-          </h3>
+          <h3 className="Bảng-thống-kê-theo-ngày">Bảng thống kê theo {date}</h3>
           <p className="month-year">Tháng month/year</p>
         </div>
         <div className="Frame-625193">
           <h4>Xem theo</h4>
-          <select value={value} onChange={handleValue} className="dropdown">
+          <select value={date} onChange={handleDate} className="dropdown">
             <option value="Ngày">Ngày</option>
             <option value="Tuần">Tuần</option>
             <option value="Tháng">Tháng</option>
           </select>
         </div>
+      </div>
+      <div className="total-card">
+        <p className="total-2">Tổng quan</p>
+        <Card
+          text="Thiết bị"
+          item={total?.Device}
+          img={window.location.origin + "/Img/monitor.png"}
+        />
       </div>
     </div>
   );

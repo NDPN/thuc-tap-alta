@@ -10,7 +10,9 @@ import DescDevice from "./page/AfterLogin/Device/DescDevice/DescDevice";
 import AddDevice from "./page/AfterLogin/Device/AddDevice/AddDevice";
 import UpdateDevice from "./page/AfterLogin/Device/UpdateDevice/UpdateDevice";
 import ShowService from "./page/AfterLogin/Service/ShowService/ShowService";
+import DescService from "./page/AfterLogin/Service/DescService/DescService";
 import AddService from "./page/AfterLogin/Service/AddService/AddService";
+import UpdService from "./page/AfterLogin/Service/UpdService/UpdService";
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
           <Route path="AddDevice" element={<AddDevice />} />
           <Route path="UpdateDevice" element={<UpdateDevice />} />
           <Route path="Service" element={<ShowService />} />
+          <Route path="DescService" element={<DescService />} />
           <Route path="AddService" element={<AddService />} />
+          <Route path="UpdateService" element={<UpdService />} />
         </Routes>
       </BrowserRouter>
     </div>

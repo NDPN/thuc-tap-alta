@@ -9,23 +9,23 @@ const AddDevice = () => {
   const navigate = useNavigate();
   const [newDevice, setnewDevice] = useState({
     input: {
-      Mã: "",
-      Tên: "",
+      ID: "",
+      name: "",
       IP: "",
-      hoatDong: "1",
-      ketNoi: "1",
-      dichVu: "",
+      active: "1",
+      connect: "1",
+      service: "",
     },
   });
 
   const handleAddDevice = async () => {
-    const { input } = newDevice
-    await addDoc(docDevice, input)
-  }
+    const { input } = newDevice;
+    await addDoc(docDevice, input);
+  };
 
   return (
     <div>
-    <Menubar/>
+      <Menubar />
       <div>
         <div
           style={{
@@ -59,7 +59,9 @@ const AddDevice = () => {
             <input
               className="auto-input"
               onChange={(e) =>
-                setnewDevice({ input: { ...newDevice.input, Mã: e.target.value } })
+                setnewDevice({
+                  input: { ...newDevice.input, ID: e.target.value },
+                })
               }
             ></input>
           </div>
@@ -81,7 +83,9 @@ const AddDevice = () => {
             <input
               className="auto-input"
               onChange={(e) =>
-                setnewDevice({ input: { ...newDevice.input, Tên: e.target.value } })
+                setnewDevice({
+                  input: { ...newDevice.input, name: e.target.value },
+                })
               }
             ></input>
           </div>
@@ -100,7 +104,9 @@ const AddDevice = () => {
             <input
               className="auto-input"
               onChange={(e) =>
-                setnewDevice({ input: { ...newDevice.input, IP: e.target.value } })
+                setnewDevice({
+                  input: { ...newDevice.input, IP: e.target.value },
+                })
               }
             ></input>
           </div>
@@ -133,7 +139,7 @@ const AddDevice = () => {
               style={{ width: "1104px" }}
               onChange={(e) =>
                 setnewDevice({
-                  input: { ...newDevice.input, dichVu: e.target.value },
+                  input: { ...newDevice.input, service: e.target.value },
                 })
               }
             ></input>

@@ -1,18 +1,34 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Menubar from "../../Menubar/Menubar";
 import "./UpdateDevice.css";
+import { db } from "../../../../components/firebase";
+import { doc, updateDoc } from "firebase/firestore";
 
-const UpdateDevice = (props) => {
+const UpdateDevice = () => {
   const navigate = useNavigate();
-  const getData = props.getData;
-  console.log(getData);
-  const [change, setChange] = useState({
-    Mã: "",
-    Tên: "",
+  const location = useLocation();
+
+  const [data, setData] = useState([]);
+  const [input, setInput] = useState({
+    ID: "",
+    name: "",
     IP: "",
-    dichVu: "",
+    service: "",
   });
+
+  useEffect(() => {
+    if (!location.state) return navigate(-1);
+    const { state } = location;
+    setData(state)
+  }, []);
+
+  const handleUpdateDevice = async (id, state) => {
+    const deviceDoc = doc(db, "Device", id);
+    await updateDoc(deviceDoc, state);
+    navigate("/Device");
+  };
+
   return (
     <div>
       <Menubar />
@@ -41,100 +57,96 @@ const UpdateDevice = (props) => {
           }}
         >
           <h1 className="Thong-tin-thiet-bi">Thông tin thiết bị</h1>
-          {getData?.map((item) => [
-            <div className="f624731" style={{ left: "24px", top: "66px" }}>
-              <label className="lable-device">
-                <p className="Sample-text">Mã thiết bị</p>
-                <span style={{ color: "red" }}>*</span>
-              </label>
-              <input
-                className="auto-input"
-                value={item.Mã}
-                onChange={(e) => setChange({ ...change, Mã: e.target.value })}
-              ></input>
-            </div>,
-            <div className="f624731" style={{ left: "588px", top: "66px" }}>
-              <label className="lable-device">
-                <p className="Sample-text">Loại thiết bị</p>
-                <span style={{ color: "red" }}>*</span>
-              </label>
-              <select className="auto-input">
-                <option value={1}>Kiosk</option>
-                <option value={2}>Display counter</option>
-              </select>
-            </div>,
-            <div className="f624731" style={{ left: "24px", top: "158px" }}>
-              <label className="lable-device">
-                <p className="Sample-text">Tên thiết bị</p>
-                <span style={{ color: "red" }}>*</span>
-              </label>
-              <input
-                className="auto-input"
-                onChange={(e) =>
-                  setChange({ input: { ...change.input, Tên: e.target.value } })
-                }
-              ></input>
-            </div>,
-            <div className="f624731" style={{ left: "588px", top: "158px" }}>
-              <label className="lable-device">
-                <p className="Sample-text">Tên đăng nhập</p>
-                <span style={{ color: "red" }}>*</span>
-              </label>
-              <input className="auto-input"></input>
-            </div>,
-            <div className="f624731" style={{ left: "24px", top: "250px" }}>
-              <label className="lable-device">
-                <p className="Sample-text">Địa chỉ IP</p>
-                <span style={{ color: "red" }}>*</span>
-              </label>
-              <input
-                className="auto-input"
-                onChange={(e) =>
-                  setChange({ input: { ...change.input, IP: e.target.value } })
-                }
-              ></input>
-            </div>,
-            <div className="f624731" style={{ left: "588px", top: "250px" }}>
-              <label className="lable-device">
-                <p className="Sample-text">Mật khẩu</p>
-                <span style={{ color: "red" }}>*</span>
-              </label>
-              <input className="auto-input"></input>
-            </div>,
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                padding: "0px",
-                position: "absolute",
-                width: "1104px",
-                height: "76px",
-                left: "24px",
-                top: "342px",
-              }}
-            >
-              <label className="lable-device">
-                <p className="Sample-text">Dịch vụ sử dụng</p>
-                <span style={{ color: "red" }}>*</span>
-              </label>
-              <input
-                className="auto-input"
-                style={{ width: "1104px" }}
-                onChange={(e) =>
-                  setChange({
-                    input: { ...change.input, dichVu: e.target.value },
-                  })
-                }
-              ></input>
-            </div>,
-            <div style={{ position: "absolute", left: "24px", top: "434px" }}>
-              <p>
-                <span style={{ color: "red" }}>*</span> Là trường thông tin bắt
-                buộc
-              </p>
-            </div>,
-          ])}
+          <div className="f624731" style={{ left: "24px", top: "66px" }}>
+            <label className="lable-device">
+              <p className="Sample-text">Mã thiết bị</p>
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              className="auto-input"
+              onChange={(e) => setInput({ ...input, ID: e.target.value })}
+            ></input>
+          </div>
+
+          <div className="f624731" style={{ left: "588px", top: "66px" }}>
+            <label className="lable-device">
+              <p className="Sample-text">Loại thiết bị</p>
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <select className="auto-input">
+              <option value={1}>Kiosk</option>
+              <option value={2}>Display counter</option>
+            </select>
+          </div>
+
+          <div className="f624731" style={{ left: "24px", top: "158px" }}>
+            <label className="lable-device">
+              <p className="Sample-text">Tên thiết bị</p>
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              className="auto-input"
+              onChange={(e) => setInput({ ...input, name: e.target.value })}
+            ></input>
+          </div>
+
+          <div className="f624731" style={{ left: "588px", top: "158px" }}>
+            <label className="lable-device">
+              <p className="Sample-text">Tên đăng nhập</p>
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input className="auto-input"></input>
+          </div>
+
+          <div className="f624731" style={{ left: "24px", top: "250px" }}>
+            <label className="lable-device">
+              <p className="Sample-text">Địa chỉ IP</p>
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              className="auto-input"
+              onChange={(e) => setInput({ ...input, IP: e.target.value })}
+            ></input>
+          </div>
+
+          <div className="f624731" style={{ left: "588px", top: "250px" }}>
+            <label className="lable-device">
+              <p className="Sample-text">Mật khẩu</p>
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input className="auto-input"></input>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              padding: "0px",
+              position: "absolute",
+              width: "1104px",
+              height: "76px",
+              left: "24px",
+              top: "342px",
+            }}
+          >
+            <label className="lable-device">
+              <p className="Sample-text">Dịch vụ sử dụng</p>
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              className="auto-input"
+              style={{ width: "1104px" }}
+              onChange={(e) => setInput({ ...input, service: e.target.value })}
+            ></input>
+          </div>
+
+          <div style={{ position: "absolute", left: "24px", top: "434px" }}>
+            <p>
+              <span style={{ color: "red" }}>*</span> Là trường thông tin bắt
+              buộc
+            </p>
+          </div>
         </form>
         <div
           style={{
@@ -163,8 +175,7 @@ const UpdateDevice = (props) => {
             className="Add-btn"
             style={{ background: "#FF9138", left: "179px" }}
             onClick={() => {
-              
-              navigate("/Device");
+              handleUpdateDevice(data?.id, input);
             }}
           >
             <p className="Add-btn-text" style={{ color: "#FFFFFF" }}>

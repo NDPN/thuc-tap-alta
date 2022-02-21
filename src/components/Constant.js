@@ -1,5 +1,5 @@
 // Kiểm tra hoạt động và kết nối
-const check = (item) => {
+const checkAct = (item) => {
   if (item == 2) {
     return {
       backgroundColor: "#EC3740",
@@ -16,7 +16,27 @@ const check = (item) => {
     };
   }
 };
+// Kiểm tra độ dài
+const checkLenght = (item, tdStyle, settdStyle) => {
+  if (item.length > 20) {
+    return (
+      <>
+        <p style={tdStyle} className="td-text service">
+          {item}
+        </p>
+        <p
+          onClick={() =>
+            settdStyle({ ...tdStyle, display: "flex", height: "auto" })
+          }
+          className="onclick-text td-text"
+        >
+          Xem thêm
+        </p>
+      </>
+    );
+  } else {
+    return <p className="td-text service">{item}</p>;
+  }
+};
 
-
-
-export { check };
+export { checkAct, checkLenght };

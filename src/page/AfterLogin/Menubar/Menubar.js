@@ -1,11 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { handleSignout } from "../../../components/firebase";
 import { useNavigate } from "react-router-dom";
 import "./Menubar.css";
 import { data } from "../../../components/firebase";
+import { docDevice, docService } from "../../../components/firebase";
+import { getDocs } from "firebase/firestore";
 
 const Menubar = () => {
   const navigate = useNavigate();
+  const [Device, setDevice] = useState([]);
+  const [Service, setService] = useState([]);
+  const [active, setactive] = useState({
+    actDashboard: 1,
+    actDevice: 2,
+  });
+  
+
+  // function get data
+  const getData = async (doc, setData) => {
+    const data = await getDocs(doc);
+    setData(data.docs.map((item) => ({ ...item.data(), id: item.id })));
+  };
+
+  useEffect(() => {
+    getData(docDevice, setDevice);
+    getData(docService, setService);
+  }, []);
   return (
     <div>
       <div className="Menubar">
@@ -21,7 +41,9 @@ const Menubar = () => {
           <div
             className="Frame f264"
             onClick={() => {
-              navigate("/Dashboard");
+              navigate("/Dashboard", {
+                state: { Service: Service, Device: Device },
+              });
             }}
           >
             <div className="f259">
@@ -36,7 +58,7 @@ const Menubar = () => {
           <div
             className="Frame f265"
             onClick={() => {
-              navigate("/Device");
+              navigate("/Device", { state: { Device } });
             }}
           >
             <div className="Frame f259">
@@ -51,7 +73,7 @@ const Menubar = () => {
           <div
             className="Frame f266"
             onClick={() => {
-              navigate("/Service");
+              navigate("/Service", { state: { Service } });
             }}
           >
             <div className="Frame f259">

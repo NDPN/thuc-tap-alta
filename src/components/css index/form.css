@@ -95,3 +95,6 @@ input[type="checkbox"] {
   height: 44px;
   left: 163px;
 }
+button {
+  cursor: pointer;
+}
