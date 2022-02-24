@@ -1,0 +1,60 @@
+.Desc-service {
+  position: absolute;
+  width: 370px;
+  height: 606px;
+  top: 172px;
+
+  background: #ffffff;
+
+  box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+  border-radius: 12px;
+}
+.Group-320 {
+  position: absolute;
+  width: 160px;
+  height: 72px;
+}
+.dropdown-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+
+  position: absolute;
+  width: 160px;
+  height: 44.15px;
+  top: 28px;
+
+  background: #ffffff;
+
+  border: 1.5px solid #d4d4d7;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.Group-340 {
+  position: absolute;
+  width: 280px;
+  height: 72px;
+  left: 196px;
+  top: 16px;
+}
+.desc-service-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+
+  position: absolute;
+  width: 130px !important;
+  height: 44.15px !important;
+  
+
+  background: #ffffff;
+  /* gray blue/gray 2 - stroke */
+
+  border: 1.5px solid #d4d4d7;
+  box-sizing: border-box;
+  border-radius: 8px;
+}

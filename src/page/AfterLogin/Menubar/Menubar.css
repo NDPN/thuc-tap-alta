@@ -1,0 +1,213 @@
+.logo-dashboard {
+  position: absolute;
+  width: 80px;
+  height: 64px;
+  left: 60px;
+  top: 32px;
+
+  cursor: pointer;
+}
+.Menubar {
+  position: absolute;
+  width: 200px;
+  height: 810px;
+  left: 0px;
+  top: 0px;
+
+  background-color: white;
+}
+.Frame {
+  position: absolute;
+  width: 200px;
+  height: 48px;
+  left: 0px;
+  top: 150px;
+
+  cursor: pointer;
+}
+.icon {
+  position: static;
+  width: 20px;
+  height: 20px;
+  left: 4px;
+  top: 14px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 8px;
+}
+.f259 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 12px 12px 4px;
+
+  position: absolute;
+  width: 176px;
+  height: 48px;
+  left: 12px;
+  top: 0px;
+
+  border-radius: 8px;
+}
+.f264 {
+  display: flex;
+  top: 150px;
+}
+.f265 {
+  top: 204px;
+}
+.f266 {
+  top: 258px;
+}
+.f267 {
+  top: 312px;
+}
+.f268 {
+  top: 366px;
+}
+.f269 {
+  top: 420px;
+}
+.content-item {
+}
+.text-contents {
+  position: static;
+  width: 80px;
+  height: 24px;
+  left: 32px;
+  top: 12px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #7e7d88;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 8px;
+}
+.log-out-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  position: absolute;
+  width: 176px;
+  height: 48px;
+  left: 12px;
+  top: 732px;
+
+  background: #fff2e7;
+  border-radius: 8px;
+  border: white;
+}
+.logout-text {
+  position: static;
+  width: 76px;
+  height: 24px;
+  left: 44px;
+  top: 12px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ff7506;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 12px;
+}
+.Topbar {
+  position: absolute;
+  width: 1240px;
+  height: 88px;
+  left: 200px;
+  top: 0px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  z-index: 1;
+}
+.Title {
+  position: absolute;
+  width: 168px;
+  height: 30px;
+  left: 24px;
+  top: 29px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+
+  color: #ff9138;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0px 8px;
+}
+.Frame-271 {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: 1045px;
+  top: 28px;
+}
+.unsplash-Fyl8sMC2j2Q {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 1104px;
+  top: 24px;
+
+  /* background: url(.jpg); */
+  border-radius: 48px;
+}
+.Group-296 {
+  position: absolute;
+  width: 124px;
+  height: 42px;
+  right: 30px;
+  top: 10px;
+}
+.Hello {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+
+  color: #7e7d88;
+}
+.Name {
+  position: absolute;
+  right: 0;
+  top: 18px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+}
+.active {
+  background-color: #ff7506;
+}
