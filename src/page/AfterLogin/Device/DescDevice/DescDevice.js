@@ -33,7 +33,7 @@ const Desc = () => {
           top: "72px",
         }}
       >
-        <h1 className="Title-1">Quản lý thiết bị</h1>
+        <h1 className="Title-1">Quản lý cấp số</h1>
       </div>
       <form className="Desc-device">
         <h1 className="Thong-tin-thiet-bi">Thông tin thiết bị</h1>

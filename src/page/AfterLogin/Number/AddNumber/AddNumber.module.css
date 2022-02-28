@@ -1,0 +1,55 @@
+.Group_269841 {
+  position: absolute;
+  left: 396px;
+  top: 24px;
+  width: 400px;
+  height: 306px;
+}
+.newNumber_h1 {
+  text-align: center;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 48px;
+
+  color: #ff7506;
+}
+.newNumber_h3 {
+  text-align: center;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 30px;
+
+  color: #535261;
+}
+.numberSelect {
+  width: 400px;
+  height: 44px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+
+  background: #ffffff;
+
+  border: 1.5px solid #d4d4d7;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.Btn_Group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  width: 262px;
+  height: 48px;
+  top: 234px;
+  left: 69px;
+}

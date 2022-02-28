@@ -1,81 +1,44 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Menubar from "../../Menubar/Menubar";
 import Button from "../../../../components/Button";
-import { data, docNumber } from "../../../../components/firebase";
-import { getData } from "../../../../components/Constant";
+import { docNumber } from "../../../../components/firebase";
+import {
+  getData,
+  checkService,
+  checkStatus,
+} from "../../../../components/Constant";
 import "./Number.css";
 
 const Number = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+
   const [Number, setNumber] = useState([]);
-  console.log(Number)
+  const [page, setpage] = useState([1]);
+  const onetPagination = Number.slice(0, 8);
+
+  // Date
+  const d = new Date();
+  const hour = d.getHours();
+  const minute = d.getMinutes();
+  const day = d.getDay();
+  const nextDay = day + 1;
+  const month = d.getMonth();
+  const year = d.getFullYear();
+
   // function
 
-  const checkAct = (status) => {
-    if (status == 1) {
-      return {
-        backgroundColor: "#4277FF",
-        height: "18px",
-        width: "18px",
-        borderRadius: "50%",
-      };
-    } else if (status == 2) {
-      return {
-        backgroundColor: "#7E7D88",
-        height: "18px",
-        width: "18px",
-        borderRadius: "50%",
-      };
-    } else {
-      return {
-        backgroundColor: "#E73F3F",
-        height: "18px",
-        width: "18px",
-        borderRadius: "50%",
-      };
-    }
-  };
-  const checkStatus = (status) => {
-    if (status == 1) {
-      return (
-        <>
-          <div className="tb-content">
-            <div style={checkAct(status)}></div>
-            <p className="td-text">Đang chờ</p>
-          </div>
-        </>
-      );
-    } else if (status == 2) {
-      return (
-        <>
-          <div className="tb-content">
-            <div style={checkAct(status)}></div>
-            <p className="td-text">Đã sử dụng</p>
-          </div>
-        </>
-      );
-    }
-    return (
-      <>
-        <div className="tb-content">
-          <div style={checkAct(status)}></div>
-          <p className="td-text">Bỏ qua</p>
-        </div>
-      </>
-    );
-  };
-  const checkService = (service) => {
-    if (service == 1) {
-      return <p className="td-text">Khám tim mạch</p>;
-    } else if ((service == 2)) {
-      return <p className="td-text">Khám sản - Phụ khoa</p>;
-    } else if ((service == 3)) {
-      return <p className="td-text">Khám răng hàm mặt</p>;
-    } else return <p className="td-text">Khám tai mũi họng</p>;
-  };
+  // const amountOfPage = () => {
+  //   let i = page.length;
+  //   const x = 9;
+  //   while (x * i > Number.length) {
+  //     i ++;
+  //   }
+  //   console.log(i);
+  // };
+  // amountOfPage();
 
+  //
   useEffect(() => {
     getData(docNumber, setNumber);
   }, []);
@@ -339,7 +302,7 @@ const Number = () => {
           <th className="th-text">Nguồn cấp</th>
           <th></th>
         </tr>
-        {Number.map((item) => [
+        {onetPagination.map((item) => [
           <tr key={item.ID}>
             <td style={{ height: "49px" }}>
               <p className="td-text">{item.number}</p>
@@ -350,12 +313,20 @@ const Number = () => {
             <td>{checkService(item.service)}</td>
             <td>
               <p className="td-text">
-                {new Date(item.start_date.seconds * 1000).toString()}
+                {hour + ":" + minute + " - " + day + "/" + month + "/" + year}
               </p>
             </td>
             <td>
               <p className="td-text">
-                {new Date(item.end_date.seconds * 1000).toString()}
+                {hour +
+                  ":" +
+                  minute +
+                  " - " +
+                  nextDay +
+                  "/" +
+                  month +
+                  "/" +
+                  year}
               </p>
             </td>
             <td>{checkStatus(item.status)}</td>
@@ -364,7 +335,7 @@ const Number = () => {
             </td>
             <td>
               <p
-                // onClick={() => navigate("/DescService", { state: item })}
+                onClick={() => navigate("/DescNumber", { state: item })}
                 className="onclick-text td-text"
               >
                 Chi tiết

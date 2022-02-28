@@ -15,7 +15,8 @@ import AddService from "./page/AfterLogin/Service/AddService/AddService";
 import UpdService from "./page/AfterLogin/Service/UpdService/UpdService";
 import Number from "./page/AfterLogin/Number/ShowNumber/Number";
 import AddNumber from "./page/AfterLogin/Number/AddNumber/AddNumber";
-
+import DescNumber from "./page/AfterLogin/Number/DescNumber/DescNumber";
+import Report from "./page/AfterLogin/Report/Report";
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
           <Route path="UpdateService" element={<UpdService />} />
           <Route path="Number" element={<Number />} />
           <Route path="AddNumber" element={<AddNumber />} />
+          <Route path="DescNumber" element={<DescNumber />} />
+          <Route path="Report" element={<Report />} />
         </Routes>
       </BrowserRouter>
     </div>

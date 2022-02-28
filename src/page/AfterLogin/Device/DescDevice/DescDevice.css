@@ -21,6 +21,7 @@
 .lable-text-desc {
   position: absolute;
 
+
   font-family: Nunito;
   font-style: normal;
   font-weight: 600;
@@ -38,6 +39,7 @@
 .text-desc {
   position: absolute;
   left: 124px;
+  width: 150px;
 
   font-family: Nunito;
   font-style: normal;

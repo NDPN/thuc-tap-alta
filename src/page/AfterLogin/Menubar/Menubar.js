@@ -38,7 +38,7 @@ const Menubar = () => {
             className="Frame f264"
             onClick={() => {
               navigate("/Dashboard", {
-                state: { Service: Service, Device: Device },
+                state: { Service: Service, Device: Device, Number: Number },
               });
             }}
           >
@@ -96,7 +96,7 @@ const Menubar = () => {
               <p className="text-content">Cấp số</p>
             </div>
           </div>
-          <div className="Frame f268">
+          <div className="Frame f268" onClick={() => navigate("/Report")}>
             <div className="Frame f259">
               <img
                 src={window.location.origin + "/Img/report.png"}
@@ -114,6 +114,29 @@ const Menubar = () => {
                 className="icon"
               ></img>
               <p className="text-content">Cài đặt hệ thống</p>
+            </div>
+            <div className="Frame-625229">
+              <div
+                className="Frame-625197"
+                style={{ top: "0" }}
+                onClick={() => navigate("/")}
+              >
+                <p className="Setting">Quản lý vai trò</p>
+              </div>
+              <div
+                className="Frame-625197"
+                style={{ top: "48px" }}
+                onClick={() => navigate("/")}
+              >
+                <p className="Setting">Quản lý tài khoản</p>
+              </div>
+              <div
+                className="Frame-625197"
+                style={{ top: "96px" }}
+                onClick={() => navigate("/")}
+              >
+                <p className="Setting">Vai trò người dùng</p>
+              </div>
             </div>
           </div>
         </div>

@@ -211,3 +211,44 @@
 .active {
   background-color: #ff7506;
 }
+.Frame-625229 {
+  display: none;
+  position: relative;
+  left: 200px;
+  width: 200px;
+  height: 144px;
+
+  background-color: white;
+  filter: drop-shadow(3px 3px 4px rgba(70, 64, 67, 0.1));
+  border-radius: 12px;
+}
+.f269:hover .Frame-625229 {
+  display: block;
+  z-index: 1;
+}
+.Frame-625197 {
+  position: absolute;
+  width: 200px;
+  height: 48px;
+}
+.Frame-625197:hover {
+  background-color: #fff2e7;
+}
+.Setting {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #7e7d88;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 8px;
+}

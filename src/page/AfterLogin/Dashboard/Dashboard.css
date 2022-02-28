@@ -9,6 +9,21 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.title-2 {
+  position: absolute;
+  width: 162px;
+  height: 36px;
+  left: 224px;
+  top: 104px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+
+  color: #ff7506;
+}
 .Rectangle-3463117 {
   width: 186px;
   height: 120px;
@@ -43,14 +58,10 @@
 
   float: right;
 }
-.Vector {
+.Vector-img {
   width: 48px;
   height: 48px;
-
-  background: #6695fb;
-  opacity: 0.15;
-  border: 1px solid #dadada;
-  border-radius: 50%;
+  color: #ff7506;
 }
 .value {
   width: 108px;
@@ -168,12 +179,12 @@
   flex-grow: 0;
   margin: 0px 8px;
 }
-.total-card {
+.total-card-1 {
   position: absolute;
   width: 401px;
   height: 810px;
   right: 0;
-  top: 0px;
+  top: 0;
 
   background: #ffffff;
 
@@ -210,4 +221,70 @@
   height: 54px;
   left: 88px;
   top: 14px;
+}
+.total-number {
+  position: absolute;
+  width: 64px;
+  height: 36px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 36px;
+
+  color: #535261;
+}
+.total-number-bottom {
+  display: flex;
+
+  position: absolute;
+  bottom: 0;
+}
+.total-img {
+  width: 14px;
+  height: 14px;
+}
+p {
+  margin: 0 0 0 0;
+}
+.Group-625205 {
+  position: absolute;
+  width: 145px;
+  height: 47px;
+  left: 192px;
+  top: 18px;
+}
+.date-picker {
+  position: absolute;
+  width: 353px;
+  height: 336px;
+  left: 24px;
+  top: 445px;
+
+  background: #ffffff;
+
+  box-shadow: 2px 2px 15px rgba(70, 64, 67, 0.1);
+  border-radius: 12px;
+}
+.chartLine {
+  width: 738.73px;
+  height: 373px;
+
+  position: absolute;
+  top: 80px;
+  left: 21px;
+}
+.unactive-text {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 21px;
+
+  color: #7e7d88;
+}
+.bull {
+  width: 10px;
+  height: 10px;
 }
