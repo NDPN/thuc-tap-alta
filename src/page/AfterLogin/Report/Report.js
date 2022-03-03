@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Menubar from "../../AfterLogin/Menubar/Menubar";
 import Button from "../../../components/Button";
-import { useNavigate } from "react-router-dom";
 import { docNumber } from "../../../components/firebase";
 import {
   getData,
@@ -10,8 +9,6 @@ import {
 } from "../../../components/Constant";
 
 const Report = () => {
-  const navigate = useNavigate();
-
   const [Report, setReport] = useState([]);
 
   // Date
@@ -30,7 +27,6 @@ const Report = () => {
     <div>
       <Menubar />
       <Button
-        
         img={window.location.origin + "/Img/Document-download.png"}
         text="Tải về"
         top="244px"
@@ -66,7 +62,7 @@ const Report = () => {
           }}
         />
       </div>
-      {/* Number talbe */}
+      {/* Report talbe */}
       <table>
         <tr>
           <th className="th-text">Số thứ tự</th>

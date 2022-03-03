@@ -119,14 +119,14 @@ const Menubar = () => {
               <div
                 className="Frame-625197"
                 style={{ top: "0" }}
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/Role")}
               >
                 <p className="Setting">Quản lý vai trò</p>
               </div>
               <div
                 className="Frame-625197"
                 style={{ top: "48px" }}
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/Account")}
               >
                 <p className="Setting">Quản lý tài khoản</p>
               </div>

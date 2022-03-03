@@ -30,6 +30,8 @@ const db = getFirestore(app);
 const docDevice = collection(db, "Device");
 const docService = collection(db, "Service");
 const docNumber = collection(db, "Number");
+const docRole = collection(db, "Role");
+const docUser = collection(db, "User");
 // ...
 const signIn = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
@@ -85,4 +87,6 @@ export {
   docDevice,
   docService,
   docNumber,
+  docRole,
+  docUser
 };

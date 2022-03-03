@@ -1,0 +1,162 @@
+.Title {
+  position: absolute;
+  left: 224px;
+  top: 104px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+
+  color: #ff7506;
+}
+.formAddRole {
+  position: absolute;
+  width: 1192px;
+  height: 534px;
+  left: 224px;
+  top: 172px;
+
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 2px 2px 8px rgba(232, 239, 244, 0.8);
+  .titleText {
+    position: absolute;
+    left: 24px;
+    top: 18px;
+
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: #ff7506;
+  }
+  .left {
+    position: absolute;
+    top: 58px;
+    left: 24px;
+    .inputNameRole {
+      margin-top: 12px;
+      .titleInput {
+        font-family: Nunito;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .setNameRole {
+        width: 560px;
+        height: 44px;
+
+        border: 1.5px solid #d4d4d7;
+        border-radius: 8px;
+        box-sizing: border-box;
+
+        margin-top: 8px;
+        padding: 10px 0 10px 12px;
+      }
+    }
+    .inputDescRole {
+      margin-top: 12px;
+      .setDescRole {
+        resize: none;
+        width: 560px;
+        height: 160px;
+
+        border: 1.5px solid #d4d4d7;
+        border-radius: 8px;
+        box-sizing: border-box;
+
+        margin-top: 8px;
+        padding: 12px 10px;
+      }
+    }
+    .notice {
+      margin-top: 12px;
+
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+  .right {
+    position: absolute;
+    top: 58px;
+    left: 608px;
+    .decent {
+      margin-top: 12px;
+      .decentTitle {
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .selDecent {
+        width: 560px;
+        height: 420px;
+
+        background-color: #fff2e7;
+        border-radius: 8px;
+
+        .decent {
+          padding: 16px 0 0 24px;
+          margin-top: 8px;
+          .group {
+            font-family: Nunito;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
+
+            color: #ff7506;
+          }
+          .checkBox {
+            margin-top: 12px;
+            input[type="checkbox"] {
+              transform: scale(1.3);
+              margin: 0 8px 0 0;
+            }
+            lable {
+              font-family: Nunito;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 16px;
+              line-height: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.twoBtn {
+  position: absolute;
+  top: 730px;
+  left: 650px;
+
+  display: flex;
+  flex-direction: row;
+  column-gap: 32px;
+  button {
+    width: 147px;
+    height: 48px;
+
+    border: 1.5px solid #ff9138;
+    box-sizing: border-box;
+
+    box-shadow: 0px 0px 6px #e7e9f2;
+    border-radius: 8px;
+    span {
+      font-family: Nunito;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+}

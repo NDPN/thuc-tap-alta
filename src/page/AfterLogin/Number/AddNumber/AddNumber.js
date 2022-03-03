@@ -25,7 +25,6 @@ const AddNumber = () => {
     source: "Kiosk",
     email: email,
   });
-  console.log(input);
   const [popup, setPopup] = useState(false);
 
   // function

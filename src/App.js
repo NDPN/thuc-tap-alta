@@ -17,6 +17,12 @@ import Number from "./page/AfterLogin/Number/ShowNumber/Number";
 import AddNumber from "./page/AfterLogin/Number/AddNumber/AddNumber";
 import DescNumber from "./page/AfterLogin/Number/DescNumber/DescNumber";
 import Report from "./page/AfterLogin/Report/Report";
+import Role from "./page/AfterLogin/System/Role/ShowRole/Role";
+import AddRole from "./page/AfterLogin/System/Role/AddRole/AddRole";
+import UpdRole from "./page/AfterLogin/System/Role/UpdRole/UpdRole";
+import Account from "./page/AfterLogin/System/Account/ShowAccount/Acccount";
+import AddAccount from "./page/AfterLogin/System/Account/AddAccount/AddAccount";
+import UpdAccount from "./page/AfterLogin/System/Account/UpdAccount/UpdAccount";
 
 function App() {
   return (
@@ -40,6 +46,12 @@ function App() {
           <Route path="AddNumber" element={<AddNumber />} />
           <Route path="DescNumber" element={<DescNumber />} />
           <Route path="Report" element={<Report />} />
+          <Route path="Role" element={<Role />} />
+          <Route path="AddRole" element={<AddRole />} />
+          <Route path="UpdRole" element={<UpdRole />} />
+          <Route path="Account" element={<Account />} />
+          <Route path="AddAccount" element={<AddAccount />} />
+          <Route path="UpdAccount" element={<UpdAccount />} />
         </Routes>
       </BrowserRouter>
     </div>

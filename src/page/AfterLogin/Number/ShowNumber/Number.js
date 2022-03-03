@@ -3,20 +3,18 @@ import { useNavigate } from "react-router-dom";
 import Menubar from "../../Menubar/Menubar";
 import Button from "../../../../components/Button";
 import { docNumber } from "../../../../components/firebase";
-import {
-  getData,
-  checkService,
-  checkStatus,
-} from "../../../../components/Constant";
-import "./Number.css";
+import { checkService, checkStatus } from "../../../../components/Constant";
+import NumberService from "../../../../service/Number/NumberService";
+import styles from "./Number.module.scss";
 
 const Number = () => {
   const navigate = useNavigate();
 
   const [Number, setNumber] = useState([]);
   const [page, setpage] = useState([1]);
-  const onetPagination = Number.slice(0, 8);
-
+  const [data, setData] = useState([]); // total Data
+  const [current, setCurrent] = useState([]);
+  const [currentPage, setCurrentPage] = useState([]);
   // Date
   const d = new Date();
   const hour = d.getHours();
@@ -25,24 +23,80 @@ const Number = () => {
   const nextDay = day + 1;
   const month = d.getMonth();
   const year = d.getFullYear();
-
-  // function
-
-  // const amountOfPage = () => {
-  //   let i = page.length;
-  //   const x = 9;
-  //   while (x * i > Number.length) {
-  //     i ++;
-  //   }
-  //   console.log(i);
-  // };
-  // amountOfPage();
-
   //
   useEffect(() => {
-    getData(docNumber, setNumber);
+    getScreenData();
   }, []);
 
+  const getScreenData = () => {
+    NumberService.showNumber(docNumber)
+      .then((res) => {
+        let newData = res.docs.map((item) => ({ ...item.data(), id: item.id }));
+        setData(newData);
+        setCurrent(newData.slice(0, 8));
+        setpage(Math.floor(newData.length / 8 + 1));
+        setCurrentPage(1);
+      })
+      .catch((err) => console.log(err.response));
+  };
+
+  const renderData = (item) => {
+    let xhtml = null;
+    xhtml = (
+      <tr key={item.ID}>
+        <td style={{ height: "49px" }}>
+          <p className="td-text">{item.number}</p>
+        </td>
+        <td>
+          <p className="td-text">{item.guest}</p>
+        </td>
+        <td>{checkService(item.service)}</td>
+        <td>
+          <p className="td-text">
+            {hour + ":" + minute + " - " + day + "/" + month + "/" + year}
+          </p>
+        </td>
+        <td>
+          <p className="td-text">
+            {hour + ":" + minute + " - " + nextDay + "/" + month + "/" + year}
+          </p>
+        </td>
+        <td>{checkStatus(item.status)}</td>
+        <td>
+          <p className="td-text">{item.source}</p>
+        </td>
+        <td>
+          <p
+            onClick={() => navigate("/DescNumber", { state: item })}
+            className="onclick-text td-text"
+          >
+            Chi tiết
+          </p>
+        </td>
+      </tr>
+    );
+    return xhtml;
+  };
+
+  const renderPage = () => {
+    let xhtml = [];
+    for (let i = 1; i <= page; i++) {
+      xhtml.push(
+        <span
+          className={`${i === currentPage ? [styles.active] : ""}`}
+          onClick={() => handleChangePage(i)}
+        >
+          {i}
+        </span>
+      );
+    }
+    return xhtml;
+  };
+
+  const handleChangePage = (page) => {
+    setCurrentPage(page);
+    setCurrent(data.slice(page * 8 - 8, page * 8));
+  };
   return (
     <div>
       <Menubar />
@@ -76,7 +130,7 @@ const Number = () => {
         </h1>
       </div>
       {/* search dịch vụ */}
-      <div className="Group-317" style={{ left: "224px" }}>
+      <div className={styles.group317} style={{ left: "224px" }}>
         <h3
           className="text"
           style={{
@@ -117,7 +171,7 @@ const Number = () => {
         </select>
       </div>
       {/* search tình trạng */}
-      <div className="Group-317" style={{ left: "402px" }}>
+      <div className={styles.group317} style={{ left: "402px" }}>
         <h3
           className="text"
           style={{
@@ -158,7 +212,7 @@ const Number = () => {
         </select>
       </div>
       {/* search nguồn cấp */}
-      <div className="Group-317" style={{ left: "580px" }}>
+      <div className={styles.group317} style={{ left: "580px" }}>
         <h3
           className="text"
           style={{
@@ -198,7 +252,10 @@ const Number = () => {
         </select>
       </div>
       {/* search thời gian */}
-      <div className="Group-317" style={{ width: "320px", left: "758px" }}>
+      <div
+        className={styles.group317}
+        style={{ width: "320px", left: "758px" }}
+      >
         <h3
           className="text"
           style={{
@@ -302,48 +359,12 @@ const Number = () => {
           <th className="th-text">Nguồn cấp</th>
           <th></th>
         </tr>
-        {onetPagination.map((item) => [
-          <tr key={item.ID}>
-            <td style={{ height: "49px" }}>
-              <p className="td-text">{item.number}</p>
-            </td>
-            <td>
-              <p className="td-text">{item.guest}</p>
-            </td>
-            <td>{checkService(item.service)}</td>
-            <td>
-              <p className="td-text">
-                {hour + ":" + minute + " - " + day + "/" + month + "/" + year}
-              </p>
-            </td>
-            <td>
-              <p className="td-text">
-                {hour +
-                  ":" +
-                  minute +
-                  " - " +
-                  nextDay +
-                  "/" +
-                  month +
-                  "/" +
-                  year}
-              </p>
-            </td>
-            <td>{checkStatus(item.status)}</td>
-            <td>
-              <p className="td-text">{item.source}</p>
-            </td>
-            <td>
-              <p
-                onClick={() => navigate("/DescNumber", { state: item })}
-                className="onclick-text td-text"
-              >
-                Chi tiết
-              </p>
-            </td>
-          </tr>,
-        ])}
+        {current.map((item, index) => {
+          return renderData(item);
+        })}
       </table>
+
+      <div className={styles.pagination}>{page && renderPage()}</div>
     </div>
   );
 };
