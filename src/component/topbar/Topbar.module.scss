@@ -1,0 +1,31 @@
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .topLeft {
+    input {
+      width: calc(470px - 76px);
+      height: calc(48px - 20px);
+      padding: 10px 60px 10px 16px;
+
+      border: 1px solid white;
+      border-radius: 12px;
+      background-color: #ededed;
+    }
+  }
+  .topRight {
+    display: flex;
+    flex-direction: row;
+    column-gap: 24px;
+    align-items: center;
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+    .avt {
+      width: 48px;
+      height: 48px;
+      border-radius: 48px;
+    }
+  }
+}

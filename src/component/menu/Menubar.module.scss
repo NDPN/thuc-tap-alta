@@ -1,0 +1,37 @@
+.logoMenu {
+  width: 133px;
+  height: 58px;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  margin-top: 59px;
+  transition: 0.2s;
+  & :hover {
+    background: #ffb800;
+    border-radius: 8px;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+    column-gap: 12px;
+    align-items: center;
+
+    padding: 15px 0 15px 26px;
+    height: 56px;
+
+    cursor: pointer;
+    
+    p {
+      font-family: Montserrat;
+      font-style: Medium;
+      font-size: 18px;
+      line-height: 26px;
+      line-height: 118%;
+      text-align: Left;
+      vertical-align: Top;
+    }
+  }
+}

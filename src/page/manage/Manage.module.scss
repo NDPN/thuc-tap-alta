@@ -1,0 +1,105 @@
+.grid {
+  display: grid;
+  grid-template-rows: 50px auto;
+  grid-template-columns: 252px auto;
+  row-gap: 20px;
+  column-gap: 36px;
+  .Menubar {
+    grid-row: 1 / span 2;
+  }
+  .Topbar {
+    grid-column: 2 / span 3;
+  }
+  .content {
+    grid-column: 2 / span 3;
+    background-color: white;
+
+    border-radius: 24px;
+
+    padding: 24px;
+    .Title {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 54px;
+    }
+    .fill {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      margin-top: 32px;
+      input {
+        width: calc(446px - 76px);
+        height: calc(48px - 20px);
+        padding: 10px 60px 10px 16px;
+
+        border: 1px solid white;
+        border-radius: 12px;
+        background-color: #ededed;
+      }
+      .right {
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+        button {
+          border: 1px solid #ff993c;
+          border-radius: 6px;
+
+          height: 48px;
+
+          cursor: pointer;
+          background-color: white;
+
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          column-gap: 10px;
+          p {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 26px;
+
+            display: flex;
+            align-items: center;
+
+            color: #ff993c;
+
+            margin: 0;
+          }
+        }
+      }
+    }
+    .tableManage {
+      width: 100%;
+      margin-top: 31px;
+
+      tr {
+        background: #f1f4f8;
+        border-radius: 8px 8px 0px 0px;
+
+        th,
+        td {
+          width: 217px;
+          height: 48px;
+          p {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 26px;
+
+            text-align: center;
+          }
+        }
+      }
+      tr:nth-child(even) {
+        height: 48px;
+        background-color: white;
+      }
+    }
+  }
+}
