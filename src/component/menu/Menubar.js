@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Menubar.module.scss";
+import { NavLink } from "react-router-dom";
 
 function Menubar() {
+  const [currentPage, setCurrentPage] = useState([]);
+
   return (
     <div style={{ width: "252px", height: "572px" }}>
       <img
@@ -10,14 +13,18 @@ function Menubar() {
         className={styles.logoMenu}
       />
       <div className={styles.page}>
-        <div className={styles.content}>
+        <NavLink activeclas exact to="/Home" className={styles.content}>
           <img src={window.location.origin + "/Img/u_home-alt.png"} alt="..." />
           <p>Trang chủ</p>
-        </div>
-        <div className={styles.content}>
+        </NavLink>
+        <NavLink
+          activeClassName={"active"}
+          to="/Manage"
+          className={[styles.content]}
+        >
           <img src={window.location.origin + "/Img/u_ticket.png"} alt="..." />
           <p>Quản lý vé</p>
-        </div>
+        </NavLink>
         <div className={styles.content}>
           <img src={window.location.origin + "/Img/u_invoice.png"} alt="..." />
           <p>Đối soát vé</p>

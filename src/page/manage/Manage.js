@@ -3,18 +3,29 @@ import styles from "./Manage.module.scss";
 import funcs from "../../css/FunctionStyle.module.scss";
 import Menubar from "../../component/menu/Menubar";
 import Topbar from "../../component/topbar/Topbar";
+import Fillter from "../../component/fillter/Fillter";
 import { docManage } from "../../service/Firebase";
 import ManageService from "../../service/Manage/ManageService";
 
 function Manage() {
   const [manage, setManage] = useState([]);
-  console.log(manage)
+  const [on, setOn] = useState(0);
 
   const getScreendata = () => {
     ManageService.manage(docManage).then((res) => {
       let newData = res.docs.map((item) => ({ ...item.data(), id: item.id }));
       setManage(newData);
     });
+  };
+
+  const setDisplay = () => {
+    if (on === 0) {
+      // off
+      setOn(on + 1);
+    } else {
+      // on
+      setOn(on - 1);
+    }
   };
 
   const styleUsed = (used) => {
@@ -52,6 +63,9 @@ function Manage() {
     <div className={styles.grid}>
       <div className={styles.Menubar}>
         <Menubar />
+        <div className={`${on === 0 ? [styles.off] : [styles.on]}`}>
+          <Fillter off={setDisplay} />
+        </div>
       </div>
       <div className={styles.Topbar}>
         <Topbar />
@@ -61,7 +75,7 @@ function Manage() {
         <div className={styles.fill}>
           <input placeholder="Tìm bằng số vé" />
           <div className={styles.right}>
-            <button>
+            <button onClick={() => setDisplay()}>
               <img
                 src={window.location.origin + "/Img/fi_filter.png"}
                 alt="..."

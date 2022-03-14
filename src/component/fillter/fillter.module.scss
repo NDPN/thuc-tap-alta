@@ -1,0 +1,83 @@
+.form {
+  padding: 24px 29px 23px 32px;
+
+  background: #ffffff;
+  border-radius: 16px;
+  width: auto;
+  max-width: 500px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .twoInput {
+    margin-top: 27px;
+  }
+  .dateInput {
+    display: flex;
+
+    row-gap: 5px;
+    .dateFlex {
+      display: flex;
+      flex-direction: column;
+      input {
+        border: 1px solid #a5a8b1;
+        box-sizing: border-box;
+        border-radius: 8px;
+
+        width: 143px;
+        height: 40px;
+      }
+    }
+  }
+  .radioInput {
+    margin-top: 20px;
+    p {
+      text-align: left;
+      margin: 0 0 0 0;
+    }
+    .radioFlex {
+      margin-top: 7px;
+
+      display: flex;
+      flex-direction: row;
+      column-gap: 40px;
+    }
+  }
+  .checkInput {
+    .checkFlex {
+      display: flex;
+      flex-direction: row;
+      column-gap: 22%;
+      
+    }
+  }
+  button {
+    width: 160px;
+    height: 48px;
+    margin: 42px auto 0 auto;
+
+    border: 1px solid #ff993c;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    background-color: #ffffff;
+
+    cursor: pointer;
+  }
+}
+
+// .filter {
+//   display: block;
+
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   // transform: translate(-50%, -50%);
+//   background: rgba(0, 0, 0, 0.4);
+// }
+// .off {
+//   display: none;
+// }
