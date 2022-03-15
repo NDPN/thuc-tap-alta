@@ -89,7 +89,7 @@
     .tableManage {
       width: 100%;
       margin-top: 31px;
-      
+
       th:first-child {
         border-top-left-radius: 10px;
       }
@@ -117,12 +117,6 @@
           width: 217px;
           height: 48px;
           p {
-            font-family: "Montserrat";
-            font-style: normal;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 26px;
-
             text-align: center;
 
             margin: 0 0 0 0;
@@ -132,6 +126,49 @@
       tr:nth-child(even) {
         height: 48px;
         background-color: white;
+      }
+
+      .change {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        width: 0%;
+        .colDotted {
+          display: flex;
+          flex-direction: column;
+          row-gap: 2px;
+          justify-content: center;
+          align-items: center;
+          width: 50px;
+          div {
+            display: none;
+            background-color: #1e0d03;
+            border-radius: 50%;
+            height: 4px;
+            width: 4px;
+          }
+        }
+        .option {
+          display: none;
+        }
+        .active {
+          display: flex;
+          flex-direction: column;
+
+          background: #ffd2a8;
+          border-radius: 8px;
+          padding: 8px 16px;
+        }
+      }
+
+      .change:hover {
+        cursor: pointer;
+        .colDotted {
+          div {
+            display: flex;
+          }
+        }
       }
     }
   }

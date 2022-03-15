@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./Manage.module.scss";
-import funcs from "../../css/FunctionStyle.module.scss";
+import funcs from "../../../src/asset/css/FunctionStyle.module.scss";
+import fonts from "../../../src/asset/css/Font.module.scss";
 import Menubar from "../../component/menu/Menubar";
 import Topbar from "../../component/topbar/Topbar";
 import Fillter from "../../component/fillter/Fillter";
@@ -9,8 +10,14 @@ import ManageService from "../../service/Manage/ManageService";
 
 function Manage() {
   const [manage, setManage] = useState([]);
+  const [value, setValue] = useState();
+  const [filter, setFilter] = useState([]);
   const [on, setOn] = useState(0);
-
+  const [modal, setModal] = useState({
+    visible: false,
+    width: 0,
+    component: null,
+  });
   const getScreendata = () => {
     ManageService.manage(docManage).then((res) => {
       let newData = res.docs.map((item) => ({ ...item.data(), id: item.id }));
@@ -19,13 +26,19 @@ function Manage() {
   };
 
   const setDisplay = () => {
+    setFilter(() => {
+      return manage.filter((item) => item.Used == value);
+    });
     if (on === 0) {
-      // off
       setOn(on + 1);
     } else {
-      // on
       setOn(on - 1);
     }
+  };
+
+  const activeChange = (item) => {
+    const id = item.id;
+    manage.indexOf((item) => console.log(item.id == id));
   };
 
   const styleUsed = (used) => {
@@ -34,7 +47,9 @@ function Manage() {
       return (
         <div className={funcs.used_1}>
           <div className={funcs.dot_1} />
-          <p>Chưa sử dụng</p>
+          <p className={fonts.medium_12} style={{ margin: "8px 0" }}>
+            Chưa sử dụng
+          </p>
         </div>
       );
     } else if (used == 2) {
@@ -42,7 +57,9 @@ function Manage() {
       return (
         <div className={funcs.used_2}>
           <div className={funcs.dot_2} />
-          <p>Đã sử dụng</p>
+          <p className={fonts.medium_12} style={{ margin: "8px 0" }}>
+            Đã sử dụng
+          </p>
         </div>
       );
     }
@@ -50,7 +67,9 @@ function Manage() {
     return (
       <div className={funcs.used_3}>
         <div className={funcs.dot_3} />
-        <p>Hết hạn</p>
+        <p className={fonts.medium_12} style={{ margin: "8px 0" }}>
+          Hết hạn
+        </p>
       </div>
     );
   };
@@ -59,12 +78,24 @@ function Manage() {
     getScreendata();
   }, []);
 
+  const closeModal = () => {
+    setModal({
+      ...modal,
+      visible: false,
+    });
+  };
+
   return (
     <div className={styles.grid}>
       <div className={styles.Menubar}>
         <Menubar />
         <div className={`${on === 0 ? [styles.off] : [styles.on]}`}>
-          <Fillter off={setDisplay} />
+          <Fillter
+            off={setDisplay}
+            value={(e) => setValue(parseInt(e.target.value))}
+            onFinishScreen={() => closeModal()}
+          />
+          {/* {modal.component}s */}
         </div>
       </div>
       <div className={styles.Topbar}>
@@ -82,7 +113,7 @@ function Manage() {
               />
               <p>Lọc vé</p>
             </button>
-            <button>
+            <button onClick={() => setValue("5")}>
               <p>Xuất file (.csv)</p>
             </button>
           </div>
@@ -110,29 +141,41 @@ function Manage() {
             <th>
               <p>Cổng check - in</p>
             </th>
+            <th></th>
           </tr>
-          {manage?.map((item) => [
+          {filter?.map((item) => [
             <tr key={manage.id}>
               <td>
-                <p>{item.Order}</p>
+                <p className={fonts.medium_14}>{item.Order}</p>
               </td>
               <td>
-                <p>{item.Booking}</p>
+                <p className={fonts.medium_14}>{item.Booking}</p>
               </td>
               <td>
-                <p>{item.Number}</p>
+                <p className={fonts.medium_14}>{item.Number}</p>
               </td>
               <td>
                 <p>{styleUsed(item.Used)}</p>
               </td>
               <td>
-                <p>{item.Start_date}</p>
+                <p className={fonts.medium_14}>{item.Start_date}</p>
               </td>
               <td>
-                <p>{item.End_date}</p>
+                <p className={fonts.medium_14}>{item.End_date}</p>
               </td>
               <td>
-                <p>{item.Gate}</p>
+                <p className={fonts.medium_14}>{item.Gate}</p>
+              </td>
+              <td className={styles.change} onClick={() => activeChange(item)}>
+                <div className={styles.colDotted}>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div className={styles.option}>
+                  <span className={fonts.medium_14}>Sử dụng vé</span>
+                  <span className={fonts.medium_14}>Đổi ngày sử dụng</span>
+                </div>
               </td>
             </tr>,
           ])}

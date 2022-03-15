@@ -1,9 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./fillter.module.scss";
-import fonts from "../../css/Font.module.scss";
+import fonts from "../../../src/asset/css/Font.module.scss";
 
 function Fillter(props) {
-  const off = props.off;
+  // const off = props.off;
+  const value = props.value;
+  useEffect(() => {}, []);
+
+  console.log(value);
+  const radioData = [
+    {
+      name: "Tất cả",
+      value: 4,
+    },
+    {
+      name: "Đã sử dụng",
+      value: 2,
+    },
+    {
+      name: "Chưa sử dụng",
+      value: 1,
+    },
+    {
+      name: "Hết hạn",
+      value: 3,
+    },
+  ];
+
+  const renderRadio = () => {
+    let xhtml = null;
+
+    xhtml = radioData.map((item) => {
+      return (
+        <div>
+          <input
+            name="value"
+            type="radio"
+            value={item.value}
+            onChange={(e) => value(e)}
+          />
+          <label className={fonts.medium_16}>{item.name}</label>
+        </div>
+      );
+    });
+    return xhtml;
+  };
 
   return (
     // <div className={`${visible === true ? styles.filter : [styles.off]}`}>
@@ -25,29 +66,12 @@ function Fillter(props) {
       </div>
       <div className={styles.radioInput}>
         <p className={fonts.semibold_16}>Tình trạng sử dụng</p>
-        <div className={styles.radioFlex}>
-          <div>
-            <input type="radio" />
-            <label className={fonts.medium_16}>Tất cả</label>
-          </div>
-          <div>
-            <input type="radio" />
-            <label className={fonts.medium_16}>Đã sử dụng</label>
-          </div>
-          <div>
-            <input type="radio" />
-            <label className={fonts.medium_16}>Chưa sử dụng</label>
-          </div>
-          <div>
-            <input type="radio" />
-            <label className={fonts.medium_16}>Hết hạn</label>
-          </div>
-        </div>
+        <div className={styles.radioFlex}>{renderRadio()}</div>
       </div>
       <div className={styles.checkInput}>
         <p className={fonts.semibold_16}>Cổng check-in</p>
         <div className={styles.checkFlex}>
-          <div style={{width: "66.47px"}}>
+          <div style={{ width: "66.47px" }}>
             <input type="checkbox" />
             <label className={fonts.medium_16}>Tất cả</label>
           </div>
@@ -75,7 +99,9 @@ function Fillter(props) {
           </div>
         </div>
       </div>
-      <button onClick={() => off()}>
+      <button
+        onClick={() => (props.off ? props.off() : "")}
+      >
         <span className={fonts.bold_18} style={{ color: "#FF993C" }}>
           Lọc
         </span>
