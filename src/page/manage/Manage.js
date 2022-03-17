@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Manage.module.scss";
 import funcs from "../../../src/asset/css/FunctionStyle.module.scss";
 import fonts from "../../../src/asset/css/Font.module.scss";

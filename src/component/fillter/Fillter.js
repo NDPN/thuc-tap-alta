@@ -7,7 +7,6 @@ function Fillter(props) {
   const value = props.value;
   useEffect(() => {}, []);
 
-  console.log(value);
   const radioData = [
     {
       name: "Tất cả",
