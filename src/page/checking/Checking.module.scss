@@ -1,14 +1,14 @@
 .grid {
   display: grid;
   grid-template-rows: 50px auto;
-  grid-template-columns: 252px auto;
+  grid-template-columns: 252px 1097px 446px;
   row-gap: 20px;
   column-gap: 36px;
   .Menubar {
     grid-row: 1 / span 2;
   }
   .Topbar {
-    grid-column: 2 / span 3;
+    grid-column: 2 / 4;
   }
   .contentLeft {
     grid-column: 2 / 2;
@@ -88,13 +88,13 @@
     }
   }
   .contentRight {
-    grid-column: 3 / 5;
+    grid-column: 3 / 4;
 
     background-color: white;
 
     border-radius: 24px;
 
-    padding: 24px;
+    padding: 24px 24px 24px 24px;
     select {
       width: 374px;
       height: 40px;
@@ -104,14 +104,43 @@
       background: #f1f4f8;
       border-radius: 8px;
     }
-    .radioFlex {
+    .bottomRight {
       display: flex;
-      flex-direction: row;
-      column-gap: 26px;
+      flex-direction: column;
+      row-gap: 24px;
+      .flexContent {
+        display: flex;
+        flex-direction: row;
+        column-gap: 26px;
+        div {
+          width: 132px;
+        }
+        .radio {
+          width: 24px;
+          height: 24px;
+        }
+        .date {
+          width: 191px;
+          height: 40px;
 
-      input {
-        width: 24px;
-        height: 24px;
+          background: #f7f8fb;
+          border-radius: 8px;
+        }
+      }
+      button {
+        width: 160px;
+        height: 48px;
+
+        transform: translate(75%, 0%);
+        cursor: pointer;
+
+        background-color: white;
+        border: 1px solid #ff993c;
+        box-sizing: border-box;
+        border-radius: 8px;
+        span {
+          color: #ff993c;
+        }
       }
     }
   }
