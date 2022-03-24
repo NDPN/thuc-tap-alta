@@ -15,5 +15,6 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 const docManage = collection(db, "Manage");
+const docTicket = collection(db, "Ticket");
 
-export { db, docManage };
+export { db, docManage, docTicket };

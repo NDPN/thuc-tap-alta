@@ -24,7 +24,6 @@ function Checking() {
   const [checking, setChecking] = useState([]);
   const [value, setValue] = useState(3);
   const [filter, setFilter] = useState([]);
-
   useEffect(() => {
     getScreendata();
   }, []);

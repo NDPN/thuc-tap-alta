@@ -113,7 +113,7 @@ function Manage() {
               />
               <p>Lọc vé</p>
             </button>
-            <button onClick={() => setValue("5")}>
+            <button>
               <p>Xuất file (.csv)</p>
             </button>
           </div>

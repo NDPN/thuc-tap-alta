@@ -29,10 +29,10 @@ function Menubar() {
           <img src={window.location.origin + "/Img/u_invoice.png"} alt="..." />
           <p>Đối soát vé</p>
         </NavLink>
-        <div className={styles.content}>
+        <NavLink to="/Setting" className={styles.content}>
           <img src={window.location.origin + "/Img/u_setting.png"} alt="..." />
           <p>Cài đặt</p>
-        </div>
+        </NavLink>
         <div className={styles.content}>
           <p>Gói dịch vụ</p>
         </div>
