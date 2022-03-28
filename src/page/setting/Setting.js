@@ -11,7 +11,10 @@ import TicketComp from "../../component/ticket/TicketComp";
 function Setting() {
   const [setting, setSetting] = useState([]);
   const [add, setAdd] = useState(0);
-  const [change, setChange] = useState(0);
+  const [change, setChange] = useState({
+    display: 0,
+    data: "",
+  });
 
   useEffect(() => {
     getScreenData();
@@ -51,19 +54,31 @@ function Setting() {
   const renderTable = () => {
     let xhtml = null;
 
-    xhtml = setting.map((item) => {
+    xhtml = setting.map((item, index) => {
       return (
         <tr>
-          <td>{item.id}</td>
+          <td>{index + 1}</td>
           <td>{item.ComboID}</td>
           <td>{item.Name}</td>
-          <td>{item.Start_date}</td>
-          <td>{item.End_date}</td>
+          <td>
+            {item.Start_date}
+            <br />
+            {item.Start_time}
+          </td>
+          <td>
+            {item.End_date}
+            <br />
+            {item.End_time}
+          </td>
           <td>{item.Price}</td>
           <td>{item.ComboPrice}</td>
           <td>{checkStatus(item.Status)}</td>
           <td>
-            <p style={{ cursor: "pointer" }} onClick={() => setChange(1)}>
+            <img src={window.location.origin + "/Img/fi_edit.png"} alt="..." />
+            <p
+              style={{ cursor: "pointer", color: "#FF993C" }}
+              onClick={() => setChange({ display: 1, data: item })}
+            >
               Cập nhật
             </p>
           </td>
@@ -75,7 +90,7 @@ function Setting() {
 
   const setDisplay = () => {
     setAdd(0);
-    setChange(0);
+    setChange({ display: 0 });
   };
 
   return (
@@ -83,10 +98,14 @@ function Setting() {
       <div className={styles.Menubar}>
         <Menubar />
         <div className={`${add == 0 ? [styles.off] : [styles.on]}`}>
-          <TicketComp title="add" display={setDisplay} />
+          <TicketComp
+            title="add"
+            display={setDisplay}
+            length={setting.length}
+          />
         </div>
-        <div className={`${change == 0 ? [styles.off] : [styles.on]}`}>
-          <TicketComp title="change" display={setDisplay} />
+        <div className={`${change.display == 0 ? [styles.off] : [styles.on]}`}>
+          <TicketComp display={setDisplay} changeData={change.data} />
         </div>
       </div>
       <div className={styles.Topbar}>
