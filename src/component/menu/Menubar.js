@@ -13,7 +13,7 @@ function Menubar() {
         className={styles.logoMenu}
       />
       <div className={styles.page}>
-        <NavLink activeClassName exact to="/Home" className={styles.content}>
+        <NavLink activeClassName exact to="/" className={styles.content}>
           <img src={window.location.origin + "/Img/u_home-alt.png"} alt="..." />
           <p>Trang chủ</p>
         </NavLink>

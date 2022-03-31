@@ -1,0 +1,46 @@
+.grid {
+  display: grid;
+  grid-template-rows: 50px auto;
+  grid-template-columns: 252px auto;
+  row-gap: 20px;
+  column-gap: 36px;
+  .Menubar {
+    grid-row: 1 / span 2;
+    .on {
+      display: block;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .off {
+      display: none;
+    }
+  }
+  .Topbar {
+    grid-column: 2 / span 3;
+  }
+  .content {
+    grid-column: 2 / span 3;
+    background-color: white;
+
+    border-radius: 24px;
+
+    padding: 24px;
+    .lineChart {
+      width: 1000px;
+    }
+    .Doughnut {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      .doughnutChart{
+        width: 246px;
+        height: 246px;
+      }
+    }
+  }
+}
