@@ -17,6 +17,10 @@ function Home() {
       </div>
       <div className={styles.content}>
         <div className={fonts.bold_36}>Danh sách vé</div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <p className={fonts.bold_18}>Doanh thu</p>
+          <input type="date" />
+        </div>
         <div className={styles.lineChart}>
           <Line
             data={{
@@ -49,14 +53,17 @@ function Home() {
           />
         </div>
         <div className={styles.total}>
-          <div className={styles.medium_14}>Tổng thanh toán theo tuần</div>
+          <div className={styles.medium_14}>Tổng doanh thu theo tuần</div>
           <div>
-            <p className={fonts.bold_24}>
+            <span className={fonts.bold_24}>
               525.145.000<span className={fonts.medium_14}> đồng</span>
-            </p>
+            </span>
           </div>
         </div>
         <div className={styles.Doughnut}>
+          <div>
+            <input type="date" />
+          </div>
           <div className={styles.doughnutChart}>
             <div className={fonts.bold_18} style={{ textAlign: "center" }}>
               Gói gia đình
@@ -92,6 +99,24 @@ function Home() {
                 ],
               }}
             />
+          </div>
+          <div>
+            <div style={{ display: "flex", columnGap: "8px" }}>
+              <div
+                className={styles.notes}
+                style={{ background: "#4F75FF" }}
+              ></div>
+              <span className={fonts.regular_14}>Vé đã sử dụng</span>
+            </div>
+            <div
+              style={{ display: "flex", columnGap: "8px", marginTop: "18px" }}
+            >
+              <div
+                className={styles.notes}
+                style={{ background: "#FF8A48" }}
+              ></div>
+              <span className={fonts.regular_14}>Vé chưa sử dụng</span>
+            </div>
           </div>
         </div>
       </div>

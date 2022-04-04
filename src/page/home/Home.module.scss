@@ -4,8 +4,10 @@
   grid-template-columns: 252px auto;
   row-gap: 20px;
   column-gap: 36px;
+
   .Menubar {
     grid-row: 1 / span 2;
+
     .on {
       display: block;
 
@@ -16,13 +18,16 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.4);
     }
+
     .off {
       display: none;
     }
   }
+
   .Topbar {
     grid-column: 2 / span 3;
   }
+
   .content {
     grid-column: 2 / span 3;
     background-color: white;
@@ -30,16 +35,32 @@
     border-radius: 24px;
 
     padding: 24px;
+
     .lineChart {
-      width: 1000px;
+      width: 100%;
     }
+
+    .total {
+      margin: 80px 0px;
+    }
+
     .Doughnut {
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
-      .doughnutChart{
+      justify-content: space-between;
+
+      .doughnutChart {
         width: 246px;
         height: 246px;
+      }
+
+      div {
+        .notes {
+          width: 44px;
+          height: 20px;
+
+          border-radius: 4px;
+        }
       }
     }
   }
