@@ -11,7 +11,7 @@ function TicketComp(props) {
   const changeData = props.changeData;
 
   const [price, setPrice] = useState({
-    ComboPrice: "",
+    ComboPrice: "-",
     Price: "",
     Ticket: "",
   });
@@ -26,14 +26,21 @@ function TicketComp(props) {
     Start_time: "",
     Status: "1",
   });
-  const [change, setChange] = useState(changeData);
+
+  const [change, setChange] = useState();
+
+  useEffect(() => {
+    setChange(changeData);
+  }, [changeData]);
 
   const handleAddTicket = async () => {
     await setDoc(doc(db, "Ticket", add.Name), add);
+    window.location.reload();
   };
   const handleUpdateTicket = () => {
     SettingService.delTicket(changeData.Name);
     SettingService.updTicket(change.Name, change);
+    // window.location.reload();
   };
 
   const renderComponent = () => {
@@ -95,7 +102,7 @@ function TicketComp(props) {
               <label className={fonts.medium_16}>Vé lẻ (vnđ/vé) với giá </label>
               <input
                 style={{ width: "calc(148px - 32px)" }}
-                onChange={(e) => setPrice({ ...price, Price: e.target.value })}
+                onChange={(e) => setPrice({ ...add, Price: e.target.value })}
               />
               <label className={fonts.medium_16}> / vé</label>
             </div>
@@ -228,20 +235,38 @@ function TicketComp(props) {
               <input
                 type="checkbox"
                 style={{ width: "24px", height: "24px" }}
+                onChange={() => setChange({ ...change, Price: price.Price })}
               />
               <label className={fonts.medium_16}>Vé lẻ (vnđ/vé) với giá </label>
-              <input style={{ width: "calc(148px - 32px)" }} />
+              <input
+                style={{ width: "calc(148px - 32px)" }}
+                onChange={(e) => setPrice({ ...change, Price: e.target.value })}
+              />
               <label className={fonts.medium_16}> / vé</label>
             </div>
             <div>
               <input
                 type="checkbox"
                 style={{ width: "24px", height: "24px" }}
+                onChange={() =>
+                  setChange({
+                    ...change,
+                    ComboPrice: price.Price + " / " + price.Ticket + " vé",
+                  })
+                }
               />
               <label className={fonts.medium_16}>Combo vé với giá </label>
-              <input style={{ width: "calc(148px - 32px)" }} />
+              <input
+                style={{ width: "calc(148px - 32px)" }}
+                onChange={(e) =>
+                  setPrice({ ...change, ComboPrice: e.target.value })
+                }
+              />
               <span className={fonts.medium_16}> / </span>
-              <input style={{ width: "calc(72px - 32px)" }} />
+              <input
+                style={{ width: "calc(72px - 32px)" }}
+                onChange={(e) => setPrice({ ...price, Ticket: e.target.value })}
+              />
               <span className={fonts.medium_16}>vé</span>
             </div>
           </div>
@@ -249,6 +274,7 @@ function TicketComp(props) {
             <div className={fonts.semibold_16}>Tình trạng</div>
             <select
               style={{ width: "176px" }}
+              value={price.Status}
               onChange={(e) => setChange({ ...change, Status: e.target.value })}
             >
               <option value="1">Đang áp dụng</option>

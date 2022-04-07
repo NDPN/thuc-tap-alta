@@ -5,7 +5,6 @@ import fonts from "../../../src/asset/css/Font.module.scss";
 function Fillter(props) {
   // const off = props.off;
   const value = props.value;
-  useEffect(() => {}, []);
 
   const radioData = [
     {

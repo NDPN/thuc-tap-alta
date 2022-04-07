@@ -73,8 +73,8 @@ function Setting() {
           <td>{item.Price}</td>
           <td>{item.ComboPrice}</td>
           <td>{checkStatus(item.Status)}</td>
-          <td>
-            <img src={window.location.origin + "/Img/fi_edit.png"} alt="..." />
+          <td style={{display: "flex", justifyContent: "center", columnGap: "8px", alignItems: "center"}}>
+            <img src={window.location.origin + "/Img/fi_edit.png"} alt="..." style={{width: "24px", height: "24px"}}/>
             <p
               style={{ cursor: "pointer", color: "#FF993C" }}
               onClick={() => setChange({ display: 1, data: item })}

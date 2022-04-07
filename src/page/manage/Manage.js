@@ -13,11 +13,7 @@ function Manage() {
   const [value, setValue] = useState();
   const [filter, setFilter] = useState([]);
   const [on, setOn] = useState(0);
-  const [modal, setModal] = useState({
-    visible: false,
-    width: 0,
-    component: null,
-  });
+
   const getScreendata = () => {
     ManageService.manage(docManage).then((res) => {
       let newData = res.docs.map((item) => ({ ...item.data(), id: item.id }));
@@ -25,10 +21,18 @@ function Manage() {
     });
   };
 
-  const setDisplay = () => {
+  const filterData = () => {
     setFilter(() => {
       return manage.filter((item) => item.Used == value);
     });
+    if (value == 4) {
+      setFilter(manage);
+      getScreendata();
+    }
+  };
+
+  const setDisplay = () => {
+    filterData();
     if (on === 0) {
       setOn(on + 1);
     } else {
@@ -78,12 +82,9 @@ function Manage() {
     getScreendata();
   }, []);
 
-  const closeModal = () => {
-    setModal({
-      ...modal,
-      visible: false,
-    });
-  };
+  useEffect(() => {
+    setFilter(manage);
+  }, [manage]);
 
   return (
     <div className={styles.grid}>
@@ -93,7 +94,6 @@ function Manage() {
           <Fillter
             off={setDisplay}
             value={(e) => setValue(parseInt(e.target.value))}
-            onFinishScreen={() => closeModal()}
           />
           {/* {modal.component}s */}
         </div>

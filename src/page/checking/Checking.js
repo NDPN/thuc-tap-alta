@@ -22,11 +22,15 @@ function Checking() {
     },
   ];
   const [checking, setChecking] = useState([]);
-  const [value, setValue] = useState(3);
+  const [value, setValue] = useState();
   const [filter, setFilter] = useState([]);
   useEffect(() => {
     getScreendata();
   }, []);
+
+  useEffect(() => {
+    setFilter(checking);
+  }, [checking]);
 
   const getScreendata = () => {
     CheckingService.checking(docManage).then((res) => {
@@ -41,6 +45,7 @@ function Checking() {
     });
     if (value == 3) {
       setFilter(checking);
+      getScreendata();
     }
   };
   // const passData = () => {

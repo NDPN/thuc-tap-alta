@@ -38,6 +38,9 @@ function Home() {
                   borderColor: "#FF8A48",
                   pointRadius: "0",
                   borderWidth: 1,
+                  backgroundColor: "rgba(250, 160, 95, 0.26)",
+                  fill: true,
+                  tension: "0.3"
                 },
               ],
             }}
