@@ -120,6 +120,9 @@ function Checking() {
         <div className={fonts.bold_36}>Đối soát vé</div>
         <div className={styles.fill}>
           <input placeholder="Tìm bằng số vé" />
+          <div className={styles.loupe}>
+            <img src={window.location.origin + "/Img/loupe_1.png"} alt="..." />
+          </div>
           <button>
             <span className={fonts.bold_18}>Chốt đối soát</span>
           </button>

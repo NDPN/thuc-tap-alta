@@ -34,7 +34,7 @@ function Menubar() {
           <p>Cài đặt</p>
         </NavLink>
         <div className={styles.content}>
-          <p>Gói dịch vụ</p>
+          <p style={{marginLeft: "50px"}}>Gói dịch vụ</p>
         </div>
       </div>
     </div>

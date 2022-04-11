@@ -38,6 +38,13 @@
         background-color: #ededed;
       }
 
+      .loupe {
+        position: absolute;
+        top: 32%;
+        left: 48.5%;
+        z-index: 1;
+      }
+
       button {
         width: 174px;
         height: 48px;
@@ -138,10 +145,6 @@
           width: 24px;
           height: 24px;
         }
-
-        // input[type="date"]::-webkit-calendar-picker-indicator {
-         
-        // }
       }
 
       button {

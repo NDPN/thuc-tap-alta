@@ -4,9 +4,11 @@
   grid-template-rows: 50px auto;
   row-gap: 20px;
   column-gap: 36px;
+
   .Menubar {
     grid-row: 1 / span 2;
-    .on{
+
+    .on {
       display: block;
 
       position: fixed;
@@ -16,24 +18,28 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.4);
     }
-    .off{
+
+    .off {
       display: none;
     }
   }
-  .Topbar {
-  }
+
+  .Topbar {}
+
   .Content {
     background-color: white;
 
     border-radius: 24px;
 
     padding: 24px;
+
     .fill {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
 
       margin-top: 32px;
+
       input {
         width: calc(446px - 76px);
         height: calc(48px - 20px);
@@ -43,10 +49,19 @@
         border-radius: 12px;
         background-color: #ededed;
       }
+
+      .loupe {
+        position: absolute;
+        top: 31%;
+        left: 48.5%;
+        z-index: 1;
+      }
+
       .right {
         display: flex;
         flex-direction: row;
         column-gap: 8px;
+
         button {
           border: 1px solid #ff993c;
           border-radius: 6px;
@@ -63,6 +78,7 @@
         }
       }
     }
+
     .tableSetting {
       width: 100%;
       margin-top: 31px;
@@ -70,15 +86,18 @@
       th:first-child {
         border-top-left-radius: 10px;
       }
+
       th:last-child {
         border-top-right-radius: 10px;
       }
+
       tr:last-child {
         td:last-child {
           border-bottom-right-radius: 10px;
           height: 49px;
         }
       }
+
       tr:last-child {
         td:first-child {
           border-bottom-left-radius: 10px;
@@ -93,6 +112,7 @@
         td {
           width: 217px;
           height: 48px;
+
           p {
             text-align: center;
 
@@ -100,6 +120,7 @@
           }
         }
       }
+
       tr:nth-child(even) {
         height: 48px;
         background-color: white;

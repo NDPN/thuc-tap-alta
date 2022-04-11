@@ -105,6 +105,9 @@ function Manage() {
         <div className={styles.Title}>Danh sách vé</div>
         <div className={styles.fill}>
           <input placeholder="Tìm bằng số vé" />
+          <div className={styles.loupe}>
+            <img src={window.location.origin + "/Img/loupe_1.png"} alt="..." />
+          </div>
           <div className={styles.right}>
             <button onClick={() => setDisplay()}>
               <img

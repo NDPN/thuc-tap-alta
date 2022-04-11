@@ -6,6 +6,9 @@ function Topbar() {
     <div className={styles.topbar}>
       <div className={styles.topLeft}>
         <input placeholder="Search" />
+        <div className={styles.loupe}>
+          <img src={window.location.origin + "/Img/loupe_1.png"} alt="..." />
+        </div>
       </div>
       <div className={styles.topRight}>
         <img

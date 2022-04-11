@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   .topLeft {
     input {
       width: calc(470px - 76px);
@@ -12,16 +13,26 @@
       border-radius: 12px;
       background-color: #ededed;
     }
+
+    .loupe {
+      position: absolute;
+      top: 6%;
+      left: 48.5%;
+      z-index: 1;
+    }
   }
+
   .topRight {
     display: flex;
     flex-direction: row;
     column-gap: 24px;
     align-items: center;
+
     .icon {
       width: 24px;
       height: 24px;
     }
+
     .avt {
       width: 48px;
       height: 48px;
